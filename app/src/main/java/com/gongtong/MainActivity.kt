@@ -6,6 +6,7 @@ import android.os.Bundle
 // test
 // 유성 테스트2
 // 재헌 테스트2
+// 유성 테스트3
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
