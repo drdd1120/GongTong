@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.gongtong.databinding.ActivityMainBinding
 import com.gongtong.databinding.ActivitySignUpBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -12,19 +11,18 @@ import com.google.firebase.ktx.Firebase
 
 private var firebaseFirestore: FirebaseFirestore? = null
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+class SignUpActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySignUpBinding
 
     val db = Firebase.firestore //파이어베이스.파이어스토어 설정
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //-----------------------------------------------------------------------
         binding.button.setOnClickListener { //쓰기 버튼 (닉네임을 파이어 스토어 저장)
 
             val aPlayerId = binding.editTextTextPersonName.text //firestore 두번째 칸 이름 (player id로 저장할 것)
@@ -71,6 +69,5 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
         }
-
     }
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "614236935034",
+    "project_id": "gongtong",
+    "storage_bucket": "gongtong.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614236935034:android:4eaadf6430f7c84e8b3cc3",
+        "android_client_info": {
+          "package_name": "com.gongtong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614236935034-p81koel72valm1fqpeo348pqdkvb2sek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gongtong",
+            "certificate_hash": "101c4ef59a357283007a5eed4c599c4fe597e9aa"
+          }
+        },
+        {
+          "client_id": "614236935034-5tbjrgtanmatpvk63shb7opq62kmistc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWT52XFcJTy-wBM2A5jF3_Ll2I8whpUJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614236935034-5tbjrgtanmatpvk63shb7opq62kmistc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
