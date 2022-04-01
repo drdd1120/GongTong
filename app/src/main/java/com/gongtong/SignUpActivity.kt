@@ -8,7 +8,7 @@ import com.gongtong.databinding.ActivitySignUpBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-// SignUp
+
 private var firebaseFirestore: FirebaseFirestore? = null
 
 class SignUpActivity : AppCompatActivity() {
