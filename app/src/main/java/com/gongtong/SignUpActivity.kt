@@ -1,5 +1,6 @@
 package com.gongtong
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -10,6 +11,10 @@ import android.os.Bundle
 
 
 class SignUpActivity : AppCompatActivity() {
+    lateinit var name: SharedPreferences
+    lateinit var birth: SharedPreferences
+    lateinit var phone: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)

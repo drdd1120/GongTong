@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/drawable/button_round.xml" value="0.25" />
         <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.3596014492753623" />
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/him35/AndroidStudioProjects/GongTong/app/src/main/res/drawable/button_round.xml" value="0.261" />
+        <entry key="..\:/Users/him35/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.2689969604863222" />
+        <entry key="..\:/Users/him35/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.2672239108409321" />
       </map>
     </option>
   </component>
