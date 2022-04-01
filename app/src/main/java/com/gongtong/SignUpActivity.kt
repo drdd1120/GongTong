@@ -1,73 +1,128 @@
 package com.gongtong
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import com.gongtong.databinding.ActivitySignUpBinding
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+
+// shared 조사 적용
+// sign up 코드 구현,
+// 의사소통판 ui(약구현)
+// 네이버 클라우드 플랫폼 연동
 
 private var firebaseFirestore: FirebaseFirestore? = null
 
 class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
-
-    val db = Firebase.firestore //파이어베이스.파이어스토어 설정
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
 
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        firebaseFirestore = FirebaseFirestore.getInstance()
+
+        val binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide();
 
-        binding.button.setOnClickListener { //쓰기 버튼 (닉네임을 파이어 스토어 저장)
-
-            val aPlayerId = binding.editTextTextPersonName.text //firestore 두번째 칸 이름 (player id로 저장할 것)
-            val aPlayerNickName = binding.editTextTextPersonName3.text  //필드에 저장할 넥네임 이름
-
-            var aplayerdata = hashMapOf( //저장할 필드값들
-                "nickname" to aPlayerNickName.toString() //필드가 1개 이상일 땐 , 붙인 다음 똑같이 필드를 만들면 됨
-                //값은 int float 등등 가능
-            )
-
-
-            db.collection("player").document(aPlayerId.toString()) //첫번째칸 컬렉션.player id 저장 부분
-                .set(aplayerdata) //필드데이터 설정
-                .addOnSuccessListener { //쓰기 성공했을 경우
-                    binding.textView.setText("write succeed " + aPlayerNickName)
-                } //닉네임 필드값
-                .addOnFailureListener() { //쓰기 실패 했을 경우
-                    binding.textView.setText("write faile")
+        //이름
+        binding.name.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                var regex = Regex("[가-힣a-zA-Z0-9]{2,10}")
+                var name = binding.name.text.toString()
+                if (name.matches(regex)) {
+                    binding.nameTest.setTextColor(Color.parseColor("#369F36"))
+                    binding.nameTest.setText("입력되었습니다.")
+                    binding.btnRegister.isEnabled = true
                 }
-        }
+                else {
+                    binding.nameTest.setTextColor(Color.parseColor("#ff0000"))
+                    binding.nameTest.setText("이름 형식이 아닙니다.")
+                    binding.btnRegister.isEnabled = false
+                }
+            }
 
-        //-----------------------------------------------------------------------
-        binding.button2.setOnClickListener { //읽기 버튼
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            val aPlayerId = binding.editTextTextPersonName.text //firestore 두번째 칸 이름 (읽을 데이터)
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
 
-            db.collection("player") //첫번째칸 컬렉션 (player 부분 필드데이터를 전부 읽음)
-                .get()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) { //제대로 읽었다면
-                        for (i in task.result!!) {
-                            if (i.id == aPlayerId.toString()) { //입력한 데이터와 같은 이름이 있다면(player id 부분)
+        //날짜
+        binding.birth.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                var regex = Regex("(19[0-9][0-9]|20\\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])")
+                var birth = binding.birth.text.toString()
+                if (birth.matches(regex)) {
+                    binding.birthTest.setTextColor(Color.parseColor("#369F36"))
+                    binding.birthTest.setText("입력되었습니다.")
+                    binding.btnRegister.isEnabled = true
+                }
+                else {
+                    binding.birthTest.setTextColor(Color.parseColor("#ff0000"))
+                    binding.birthTest.setText("날짜 형식이 아닙니다.")
+                    binding.btnRegister.isEnabled = false
+                }
+            }
 
-                                val theNickName = i.data["nickname"] //필드 데이터
-                                binding.textView.text = theNickName.toString()
-                                break
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-                            }
-                        }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
 
 
-                    } else { //오류 발생시
+        //전화번호
+        binding.phone.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                var regex = Regex("01[016789][0-9]{3,4}[0-9]{4}\$")
+                var phone = binding.phone.text.toString()
+                if (phone.matches(regex)) {
+                    binding.phoneTest.setTextColor(Color.parseColor("#369F36"))
+                    binding.phoneTest.setText("입력되었습니다.")
+                    binding.btnRegister.isEnabled = true
+                }
+                else {
+                    binding.phoneTest.setTextColor(Color.parseColor("#ff0000"))
+                    binding.phoneTest.setText("핸드폰 형식이 아닙니다.")
+                    binding.btnRegister.isEnabled = false
+                }
+            }
 
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
+
+        data class UserDTO(
+            var name: String? = null,
+            var birth: String? = null,
+            var phone: String? = null
+        )
+
+        binding.btnRegister.setOnClickListener {
+            var userDTO = UserDTO()
+            userDTO.name = binding.name.text.toString()
+            userDTO.birth = binding.birth.text.toString()
+            userDTO.phone = binding.phone.text.toString()
+
+            if(userDTO.name!!.isNotEmpty() && userDTO.birth!!.isNotEmpty() && userDTO.phone!!.isNotEmpty()){
+                firebaseFirestore?.collection("userinfo")?.document(userDTO.birth!!.plus(userDTO.phone!!))?.set(userDTO)
+                    ?.addOnSuccessListener {
+                        Toast.makeText(
+                            this,
+                            "사용자 정보 등록 완료",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    }?.addOnFailureListener {
+                        Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
                     }
-                }
+            }
+
         }
+
     }
 }
