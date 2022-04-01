@@ -6,17 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
+    <TextView
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="읽기"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="356dp"
+        android:text="메인 입니다"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

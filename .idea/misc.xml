@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/drawable/button_round.xml" value="0.25" />
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.243" />
       </map>
     </option>
   </component>
