@@ -48,7 +48,7 @@
         android:padding="10dp"
         android:hint="형식 생각해봐야함"
         android:textSize="12sp"
-        android:inputType="textPersonName"
+        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/birth"
