@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.3596014492753623" />
-        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_home.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.243" />
+        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_home.xml" value="0.2557291666666667" />
+        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
+        <entry key="..\:/Users/drdd1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.20652173913043478" />
       </map>
     </option>
   </component>
