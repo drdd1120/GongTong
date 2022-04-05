@@ -26,7 +26,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.name.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 val name = binding.name.text.toString()
-                val regex = Regex("[가-힣a-zA-Z0-9]{2,10}")
+                val regex = Regex("[가-힣]{2,10}")
                 if (name.matches(regex)) {
                     binding.nameTest.setTextColor(Color.parseColor("#369F36"))
                     binding.nameTest.setText("입력되었습니다.")
