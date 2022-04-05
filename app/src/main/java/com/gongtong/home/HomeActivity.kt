@@ -68,7 +68,7 @@ class HomeActivity : AppCompatActivity() {
                 con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId)
                 con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret)
                 // post request
-                val postParams = "speaker=nara&volume=0&speed=0&pitch=0&format=mp3&text=$text"
+                val postParams = "speaker=ntaejin&volume=0&speed=0&pitch=0&format=mp3&text=$text"
                 con.doOutput = true
                 val wr = DataOutputStream(con.outputStream)
                 wr.writeBytes(postParams)
@@ -100,6 +100,7 @@ class HomeActivity : AppCompatActivity() {
                     audioPlay.setDataSource(filename)
                     audioPlay.prepare()
                     audioPlay.start()
+
 
                 } else {  // 오류 발생
                     br = BufferedReader(InputStreamReader(con.errorStream))
