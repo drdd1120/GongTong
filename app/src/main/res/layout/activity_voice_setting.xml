@@ -26,37 +26,73 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/man">
 
-        <RadioButton
-            android:id="@+id/nes_c_kihyo"
-            android:layout_width="match_parent"
+        <GridLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="기효" />
+            android:orientation="horizontal"
+            android:columnCount="4"
+            >
+            <RadioButton
+                android:id="@+id/nes_c_kihyo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="기효" />
 
-        <RadioButton
-            android:id="@+id/nminsang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="민상" />
+            <RadioButton
+                android:id="@+id/nminsang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="민상" />
 
-        <RadioButton
-            android:id="@+id/nseonghoon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="성훈" />
+            <RadioButton
+                android:id="@+id/nseonghoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="성훈" />
 
-        <RadioButton
-            android:id="@+id/nseungpyo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="승표" />
+            <RadioButton
+                android:id="@+id/nseungpyo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="승표" />
+            <RadioButton
+                android:id="@+id/nsiyoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="시윤" />
+
+            <RadioButton
+                android:id="@+id/nsinu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="신우" />
+
+            <RadioButton
+                android:id="@+id/nyoungil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="영일" />
+
+            <RadioButton
+                android:id="@+id/nwontak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="원탁" />
+        </GridLayout>
+
     </RadioGroup>
 
     <RadioGroup
@@ -69,33 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/men1">
 
-        <RadioButton
-            android:id="@+id/nsiyoon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="시윤" />
 
-        <RadioButton
-            android:id="@+id/nsinu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="신우" />
-
-        <RadioButton
-            android:id="@+id/nyoungil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="영일" />
-
-        <RadioButton
-            android:id="@+id/nwontak"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="원탁" />
     </RadioGroup>
 
     <RadioGroup
