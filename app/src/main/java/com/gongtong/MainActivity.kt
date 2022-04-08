@@ -3,6 +3,8 @@ package com.gongtong
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.gongtong.databinding.ActivityMainBinding
 import com.gongtong.home.HomeActivity
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
         var prefKey = MyApplication.prefs.getString("prefkey", "")
 
         if(prefKey!=""){
@@ -35,6 +39,21 @@ class MainActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item!!.itemId) {
+            R.id.action_call -> { //검색 버튼 눌렀을 때
+                Toast.makeText(applicationContext, "비상전화", Toast.LENGTH_SHORT).show()
+                return super.onOptionsItemSelected(item)
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 }
