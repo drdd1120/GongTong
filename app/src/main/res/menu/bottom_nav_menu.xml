@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_baseline_record_voice_over_24"
+        android:title="의사소통판" />
+
+    <item
+        android:id="@+id/chatFragment"
+        android:title="네브메뉴2" />
+
+    <item
+        android:id="@+id/mapsActivity"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="설정" />
+
+</menu>
