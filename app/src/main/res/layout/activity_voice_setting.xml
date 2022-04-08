@@ -31,32 +31,32 @@
         app:layout_constraintTop_toBottomOf="@+id/man">
 
         <RadioButton
-            android:id="@+id/rb1"
+            android:id="@+id/nes_c_kihyo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="기효" />
 
         <RadioButton
-            android:id="@+id/rb2"
+            android:id="@+id/nminsang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="민상" />
 
         <RadioButton
-            android:id="@+id/rb3"
+            android:id="@+id/nseonghoon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="성훈" />
 
         <RadioButton
-            android:id="@+id/rb4"
+            android:id="@+id/nseungpyo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="승표" />
     </RadioGroup>
 
     <RadioGroup
@@ -70,32 +70,32 @@
         app:layout_constraintTop_toBottomOf="@+id/men1">
 
         <RadioButton
-            android:id="@+id/rb11"
+            android:id="@+id/nsiyoon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="시윤" />
 
         <RadioButton
-            android:id="@+id/rb21"
+            android:id="@+id/nsinu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="신우" />
 
         <RadioButton
-            android:id="@+id/rb31"
+            android:id="@+id/nyoungil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="영일" />
 
         <RadioButton
-            android:id="@+id/rb41"
+            android:id="@+id/nwontak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="원탁" />
     </RadioGroup>
 
     <RadioGroup
@@ -109,32 +109,32 @@
         app:layout_constraintTop_toBottomOf="@+id/men2">
 
         <RadioButton
-            android:id="@+id/rb111"
+            android:id="@+id/njaewook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="재욱" />
 
         <RadioButton
-            android:id="@+id/rb211"
+            android:id="@+id/njonghyun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="종현" />
 
         <RadioButton
-            android:id="@+id/rb311"
+            android:id="@+id/njooahn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="주안" />
 
         <RadioButton
-            android:id="@+id/rb411"
+            android:id="@+id/njoonyoung"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="준영" />
     </RadioGroup>
 
     <RadioGroup
@@ -148,32 +148,32 @@
         app:layout_constraintTop_toBottomOf="@+id/men3">
 
         <RadioButton
-            android:id="@+id/rb112"
+            android:id="@+id/njihwan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="지환" />
 
         <RadioButton
-            android:id="@+id/rb212"
+            android:id="@+id/njihun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="지훈" />
 
         <RadioButton
-            android:id="@+id/rb312"
+            android:id="@+id/njinho"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="진호" />
 
         <RadioButton
-            android:id="@+id/rb412"
+            android:id="@+id/ntaejin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="태진" />
     </RadioGroup>
 
     <TextView
@@ -318,32 +318,32 @@
         app:layout_constraintTop_toBottomOf="@+id/women3">
 
         <RadioButton
-            android:id="@+id/rb13"
+            android:id="@+id/nsujin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="수진" />
 
         <RadioButton
-            android:id="@+id/rb23"
+            android:id="@+id/nara"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="아라 " />
 
         <RadioButton
-            android:id="@+id/rb33"
+            android:id="@+id/nyejin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="예진" />
 
         <RadioButton
-            android:id="@+id/rb43"
+            android:id="@+id/nyujin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="유진" />
     </RadioGroup>
 
     <RadioGroup
@@ -357,32 +357,32 @@
         app:layout_constraintTop_toBottomOf="@+id/women4">
 
         <RadioButton
-            android:id="@+id/rb13"
+            android:id="@+id/neunyoung"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="은영" />
 
         <RadioButton
-            android:id="@+id/rb23"
+            android:id="@+id/njiwon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="지원 " />
 
         <RadioButton
-            android:id="@+id/rb33"
+            android:id="@+id/njiyun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="지윤" />
 
         <RadioButton
-            android:id="@+id/rb43"
+            android:id="@+id/nes_c_hyeri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="치킨" />
+            android:text="혜리" />
     </RadioGroup>
 
     <TextView
@@ -399,14 +399,24 @@
         android:textColor="@color/black"
         tools:ignore="MissingConstraints" />
 
-    <RadioButton
+    <RadioGroup
         android:id="@+id/boy1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="치킨"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boy" />
+        app:layout_constraintTop_toBottomOf="@+id/boy">
+
+        <RadioButton
+            android:id="@+id/nhajun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="하준" />
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/girl"
@@ -433,18 +443,18 @@
         app:layout_constraintTop_toBottomOf="@+id/girl">
 
         <RadioButton
-            android:id="@+id/rb13"
+            android:id="@+id/ndain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삼겹살" />
+            android:text="다인" />
 
         <RadioButton
-            android:id="@+id/rb23"
+            android:id="@+id/ngaram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="족발" />
+            android:text="가람" />
     </RadioGroup>
 
     <Button
