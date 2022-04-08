@@ -138,8 +138,4 @@ class HomeActivity : AppCompatActivity() {
             binding.editText.setText("")
         }
     }
-
-
-
-
 }
