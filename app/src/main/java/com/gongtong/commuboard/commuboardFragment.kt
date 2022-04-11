@@ -30,6 +30,7 @@ val audioPlay = MediaPlayer()
 private var statusProgress: ProgressBar?=null;
 var gText: String? = null
 
+// test
 
 class commuboardFragment : Fragment() {
 
