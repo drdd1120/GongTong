@@ -77,8 +77,8 @@ class commuboardFragment : Fragment() {
 
         override fun doInBackground(vararg params: String?): String {
 
-            var voice = MyApplication.prefs.getString("voice", "ntaejin")
-            var voicespeed = MyApplication.prefs.getString("voicespeed", "0")
+            val voice = MyApplication.prefs.getString("voice", "ntaejin")
+            val voicespeed = MyApplication.prefs.getString("voicespeed", "0")
 
             //APIExamTTS.main(args)
             val clientId = "m2b9osigjy"//애플리케이션 클라이언트 아이디값";
@@ -93,7 +93,8 @@ class commuboardFragment : Fragment() {
                 con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId)
                 con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret)
                 // post request
-                val postParams = "speaker="+voice+"&volume=0&speed="+voicespeed+"&pitch=0&format=mp3&text=$text"
+                val postParams =
+                    "speaker=$voice&volume=0&speed=$voicespeed&pitch=0&format=mp3&text=$text"
                 con.doOutput = true
                 val wr = DataOutputStream(con.outputStream)
                 wr.writeBytes(postParams)
