@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import com.gongtong.MainActivity
 import com.gongtong.R
@@ -151,6 +152,23 @@ class SettingFragment : Fragment() {
                 })
             builder.show()
         }
+
+        binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            // 시크바를 조작하고 있는 중 작동
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+//                binding!!.speedSeekbarText.text = progress.toString()
+                binding!!.speedSeekbarText.text = "$progress"
+            }
+            // 시크 바를 조작하기 시작했을 때 작동
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
+            }
+            // 시크 바 조작을 마무리했을 때 작동
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
+            }
+        })
 
         super.onResume()
     }
