@@ -7,6 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".settings.SettingFragment">
 
+    <View
+        android:id="@+id/subView"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#808080"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/subView2"/>
+
+    <View
+        android:id="@+id/subView2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#808080"
+        app:layout_constraintTop_toBottomOf="@+id/subView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <TextView
         android:id="@+id/voiceSettingText"
         android:layout_width="wrap_content"
@@ -25,39 +41,118 @@
         android:id="@+id/men"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/dad"
+        app:layout_constraintBottom_toBottomOf="@+id/women"
         app:layout_constraintEnd_toStartOf="@+id/women"
-        app:layout_constraintBottom_toTopOf="@+id/subView"
-        android:background="@drawable/dad"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/women" />
+
+    <TextView
+        android:id="@+id/menText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="남성"
+        app:layout_constraintTop_toBottomOf="@+id/men"
+        app:layout_constraintStart_toStartOf="@+id/men"
+        app:layout_constraintEnd_toEndOf="@+id/men"
+        tools:ignore="MissingConstraints" />
 
     <android.widget.Button
         android:id="@+id/women"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/mom"
         app:layout_constraintBottom_toTopOf="@+id/subView"
-        android:background="@drawable/mom"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/womenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="여성"
+        app:layout_constraintTop_toBottomOf="@+id/women"
+        app:layout_constraintStart_toStartOf="@+id/women"
+        app:layout_constraintEnd_toEndOf="@+id/women"
+        tools:ignore="MissingConstraints" />
 
     <android.widget.Button
         android:id="@+id/kid"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toEndOf="@+id/women"
+        android:background="@drawable/daughter"
+        app:layout_constraintBottom_toBottomOf="@+id/women"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/subView"
-        android:background="@drawable/daughter"/>
+        app:layout_constraintStart_toEndOf="@+id/women"
+        app:layout_constraintTop_toTopOf="@+id/women" />
 
-    <View
-        android:id="@+id/subView"
+    <TextView
+        android:id="@+id/kidText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="아이"
+        app:layout_constraintTop_toBottomOf="@+id/kid"
+        app:layout_constraintStart_toStartOf="@+id/kid"
+        app:layout_constraintEnd_toEndOf="@+id/kid"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/speedSettingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:paddingStart="4dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="속도설정"
+        app:layout_constraintTop_toBottomOf="@+id/subView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <SeekBar
+        android:id="@+id/speedSeekbar"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#808080"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="wrap_content"
+        android:min="-3"
+        android:max="3"
+        app:layout_constraintBottom_toTopOf="@+id/subView2"
+        app:layout_constraintTop_toBottomOf="@+id/subView" />
+
+    <TextView
+        android:id="@+id/speedSeekbarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="속도가 이곳에 표시됩니다"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/subView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speedSeekbar" />
+
+    <TextView
+        android:id="@+id/phoneSettingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:paddingStart="4dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="보호자 연락처 변겅"
+        app:layout_constraintTop_toBottomOf="@+id/subView2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
