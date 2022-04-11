@@ -6,8 +6,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.gongtong.databinding.ActivityMainBinding
+import com.gongtong.emergency.EmergencyFragment
 import com.gongtong.home.HomeActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -25,6 +33,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false);
+        val navView: BottomNavigationView = binding.bottomNavView
+        val navController = findNavController(R.id.fragment_host)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.commuboardFragment,
+                R.id.emergencyFragment,
+                R.id.settingFragment
+
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
         var prefKey = MyApplication.prefs.getString("prefkey", "")
 
         if(prefKey!=""){
@@ -33,11 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
         else {
             val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnRegister.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
