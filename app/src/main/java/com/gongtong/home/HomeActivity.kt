@@ -14,6 +14,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gongtong.databinding.ActivityHomeBinding
+import com.gongtong.settings.SettingFragment
 import com.gongtong.settings.VoiceSettingActivity
 import java.io.*
 import java.net.HttpURLConnection
@@ -47,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.button2.setOnClickListener {
-            val intent = Intent(this, VoiceSettingActivity::class.java)
+            val intent = Intent(this, SettingFragment::class.java)
             startActivity(intent)
         }
     }
