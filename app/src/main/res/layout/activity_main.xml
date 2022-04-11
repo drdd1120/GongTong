@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:theme="@style/Theme.Test.AppBarOverlay"
-        tools:ignore="MissingConstraints">
+        android:theme="@style/Theme.Test.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,26 +22,25 @@
             app:popupTheme="@style/Theme.Test.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/button2"
+    <fragment
+        android:id="@+id/fragment_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="172dp"
-        android:layout_marginBottom="356dp"
-        android:text="메인 입니다"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#66A2D8"
-        android:text="홈으로"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+  </LinearLayout>
