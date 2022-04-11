@@ -10,6 +10,4 @@ class MyApplication:Application() {
         prefs = PreferenceUtil(applicationContext)
         super.onCreate()
     }
-
-
 }
