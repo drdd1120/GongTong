@@ -163,7 +163,10 @@ class SettingFragment : Fragment() {
                 })
             builder.show()
         }
-        binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
+        binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
+        binding!!.speedSeekbarText.text = currentvoicespeed
+            binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
 
             // 시크바를 조작하고 있는 중 작동
