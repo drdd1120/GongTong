@@ -163,6 +163,9 @@ class SettingFragment : Fragment() {
                 })
             builder.show()
         }
+        var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
+        binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
+        binding!!.speedSeekbarText.text = currentvoicespeed
         binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
             // 시크바를 조작하고 있는 중 작동
@@ -179,23 +182,6 @@ class SettingFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
                 MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
-            }
-        })
-
-        binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-
-            // 시크바를 조작하고 있는 중 작동
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-//                binding!!.speedSeekbarText.text = progress.toString()
-                binding!!.speedSeekbarText.text = "$progress"
-            }
-            // 시크 바를 조작하기 시작했을 때 작동
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
-            }
-            // 시크 바 조작을 마무리했을 때 작동
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
             }
         })
 
