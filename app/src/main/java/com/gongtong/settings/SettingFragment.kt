@@ -166,8 +166,7 @@ class SettingFragment : Fragment() {
         var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
         binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
         binding!!.speedSeekbarText.text = currentvoicespeed
-            var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
-
+            binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             // 시크바를 조작하고 있는 중 작동
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding!!.speedSeekbarText.text = "$progress"
