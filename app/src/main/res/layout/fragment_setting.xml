@@ -133,7 +133,6 @@
         android:id="@+id/speedSeekbarText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="속도가 이곳에 표시됩니다"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/subView2"
         app:layout_constraintEnd_toEndOf="parent"
