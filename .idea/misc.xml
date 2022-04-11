@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/drawable/ic_baseline_record_voice_over_24.xml" value="0.363" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.363" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_home.xml" value="0.3079710144927536" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/fragment_commuboard.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/fragment_emergency.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/fragment_setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/layout/toolbar.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/BlancCarte/AndroidStudioProjects/GongTong/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.243" />
         <entry key="..\:/Users/beso1/AndroidStudioProjects/GongTong/app/src/main/res/drawable/button_round.xml" value="0.21" />
         <entry key="..\:/Users/beso1/AndroidStudioProjects/GongTong/app/src/main/res/layout/activity_main.xml" value="0.34629629629629627" />

@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/men"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toTopOf="@+id/subView"
         android:background="@drawable/dad"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/women"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -41,7 +41,7 @@
         app:layout_constraintBottom_toTopOf="@+id/subView"
         android:background="@drawable/mom"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/kid"
         android:layout_width="70dp"
         android:layout_height="70dp"

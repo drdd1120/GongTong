@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.gongtong.MainActivity
 import com.gongtong.R
 import com.gongtong.databinding.FragmentSettingBinding
 import com.gongtong.home.HomeActivity
@@ -16,12 +17,12 @@ import com.gongtong.home.HomeActivity
 
 class SettingFragment : Fragment() {
 
-    private var mainActivity: HomeActivity? = null
+    private var mainActivity: MainActivity? = null
     private var binding: FragmentSettingBinding? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainActivity = context as HomeActivity
+        mainActivity = context as MainActivity
 
     }
     override fun onCreate(savedInstanceState: Bundle?) {
