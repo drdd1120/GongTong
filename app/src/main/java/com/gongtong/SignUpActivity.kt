@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import com.gongtong.databinding.ActivitySignUpBinding
+import com.gongtong.preference.MyApplication
 import com.google.firebase.firestore.FirebaseFirestore
 
 private var firebaseFirestore: FirebaseFirestore? = null

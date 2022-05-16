@@ -17,8 +17,7 @@
         >
         <activity
             android:name=".settings.VoiceSettingActivity"
-            android:exported="false"
-            android:theme="@style/Theme.GongTong.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

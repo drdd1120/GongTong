@@ -2,18 +2,14 @@ package com.gongtong.settings
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.Intent
-import android.net.Uri
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.widget.RadioButton
-import android.widget.RadioGroup
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gongtong.MyApplication
-import com.gongtong.R
+import com.gongtong.preference.MyApplication
 import com.gongtong.databinding.ActivityVoiceSettingBinding
 
 class VoiceSettingActivity : AppCompatActivity() {
@@ -166,6 +162,39 @@ class VoiceSettingActivity : AppCompatActivity() {
             }
         })
 
+        //전화번호
+        binding.modifyPhoneNumber.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                val phone = binding.modifyPhoneNumber.text.toString()
+                val regex = Regex("01[016789][0-9]{3,4}[0-9]{4}$")
+                if (phone.matches(regex)) {
+                    binding.phoneTest.setTextColor(Color.parseColor("#369F36"))
+                    binding.phoneTest.setText("입력되었습니다.")
+                    binding.btnModify.isEnabled = true
+                }
+                else {
+                    binding.phoneTest.setTextColor(Color.parseColor("#ff0000"))
+                    binding.phoneTest.setText("올바른 핸드폰 형식이 아닙니다.")
+                    binding.btnModify.isEnabled = false
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
+
+        binding.modifyPhoneNumber.setText(MyApplication.prefs.getString("prefphonenumber", ""))
+
+        binding.btnModify.setOnClickListener {
+
+            var phone = binding.modifyPhoneNumber.text.toString()
+
+            if(phone!!.isNotEmpty()){
+                MyApplication.prefs.setString("prefphonenumber", phone)
+                Toast.makeText(this, "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
