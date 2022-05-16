@@ -2,12 +2,17 @@ package com.gongtong.settings
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.gongtong.MyApplication
 import com.gongtong.R
 import com.gongtong.databinding.ActivityVoiceSettingBinding
 
@@ -17,7 +22,8 @@ class VoiceSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVoiceSettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
         var voiceChoice = HashMap<String, String>()
         //남자
         voiceChoice.put("민상", "nminsang")
@@ -76,7 +82,10 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        voiceChoice.get(selectedItem)
+                        var voice = voiceChoice.get(selectedItem)
+                        if (voice != null) {
+                            MyApplication.prefs.setString("voice", voice)
+                        }
                         Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
@@ -98,7 +107,10 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        voiceChoice.get(selectedItem)
+                        var voice = voiceChoice.get(selectedItem)
+                        if (voice != null) {
+                            MyApplication.prefs.setString("voice", voice)
+                        }
                         Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
@@ -121,7 +133,10 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        voiceChoice.get(selectedItem)
+                        var voice = voiceChoice.get(selectedItem)
+                        if (voice != null) {
+                            MyApplication.prefs.setString("voice", voice)
+                        }
                         Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
@@ -129,5 +144,29 @@ class VoiceSettingActivity : AppCompatActivity() {
                 })
             builder.show()
         }
+
+        var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
+        binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
+        binding!!.speedSeekbarText.text = currentvoicespeed
+        binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            // 시크바를 조작하고 있는 중 작동
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                binding!!.speedSeekbarText.text = "$progress"
+                MyApplication.prefs.setString("voicespeed", "$progress")
+            }
+            // 시크 바를 조작하기 시작했을 때 작동
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
+                MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
+            }
+            // 시크 바 조작을 마무리했을 때 작동
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
+                MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
+            }
+        })
+
+
     }
+
 }

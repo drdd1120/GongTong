@@ -13,8 +13,8 @@
             android:id="@+id/action_commuboardFragment_to_emergencyFragment"
             app:destination="@id/emergencyFragment" />
         <action
-            android:id="@+id/action_commuboardFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
+            android:id="@+id/action_commuboardFragment_to_voiceSettingActivity"
+            app:destination="@id/voicesettingActivity" />
         <action
             android:id="@+id/action_commuboardFragment_to_everydaylifeFragment"
             app:destination="@id/everydaylifeFragment" />
@@ -23,16 +23,33 @@
         android:id="@+id/everydaylifeFragment"
         android:name="com.gongtong.everydaylife.EverydayLifeFragment"
         android:label="일상생활"
-        tools:layout="@layout/fragment_emergency" />
+        tools:layout="@layout/fragment_emergency" >
+        <action
+            android:id="@+id/action_everydaylifeFragment_to_commuboardFragment"
+            app:destination="@id/commuboardFragment" />
+        <action
+            android:id="@+id/action_everydaylifeFragment_to_emergencyFragment"
+            app:destination="@id/emergencyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/emergencyFragment"
         android:name="com.gongtong.emergency.EmergencyFragment"
         android:label="긴급상황"
-        tools:layout="@layout/fragment_emergency" />
+        tools:layout="@layout/fragment_emergency" >
+        <action
+            android:id="@+id/action_emergencyFragment_to_commuboardFragment"
+            app:destination="@id/commuboardFragment" />
+        <action
+            android:id="@+id/action_emergencyFragment_to_commuboardFragment2"
+            app:destination="@id/commuboardFragment" />
+        <action
+            android:id="@+id/action_emergencyFragment_to_everydaylifeFragment"
+            app:destination="@id/everydaylifeFragment" />
+    </fragment>
 
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.gongtong.settings.SettingFragment"
+    <activity
+        android:id="@+id/voicesettingActivity"
+        android:name="com.gongtong.settings.VoiceSettingActivity"
         android:label="설정"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/activity_voice_setting" />
 </navigation>
