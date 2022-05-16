@@ -103,7 +103,7 @@ class SettingFragment : Fragment() {
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
-                        Toast.makeText(context, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()//삭제할부분
+                        Toast.makeText(context, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
                     Toast.makeText(context, "취소누름", Toast.LENGTH_SHORT).show()
@@ -161,6 +161,7 @@ class SettingFragment : Fragment() {
                 })
             builder.show()
         }
+
         var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
         binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
         binding!!.speedSeekbarText.text = currentvoicespeed

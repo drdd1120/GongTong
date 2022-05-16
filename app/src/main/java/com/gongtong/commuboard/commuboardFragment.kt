@@ -15,6 +15,7 @@ import com.gongtong.MainActivity
 import com.gongtong.MyApplication
 import com.gongtong.R
 import com.gongtong.databinding.ActivityHomeBinding
+import com.gongtong.databinding.ActivityMainBinding
 import com.gongtong.databinding.FragmentCommuboardBinding
 import com.gongtong.databinding.FragmentSettingBinding
 import com.gongtong.home.HomeActivity
@@ -35,6 +36,7 @@ class commuboardFragment : Fragment() {
 
     private var mainActivity: MainActivity? = null
     private var binding: FragmentCommuboardBinding? = null
+    private var tmp: String? = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -64,6 +66,22 @@ class commuboardFragment : Fragment() {
             }
             //AsyncTask를 수행한다.
             AsyncTaskExample().execute(gText)
+        }
+
+        binding!!.button2.setOnClickListener {
+            mainActivity?.replaceFragment(BlankFragment())
+        }
+
+        binding!!.view1.setOnClickListener {
+            tmp = binding!!.editText.text.toString()
+            binding!!.editText.setText(tmp.plus(" ").plus("의자왕")).toString()
+            gText = binding!!.editText.text.toString()
+        }
+
+        binding!!.view2.setOnClickListener {
+            tmp = binding!!.editText.text.toString()
+            binding!!.editText.setText(tmp.plus(" ").plus("신범석")).toString()
+            gText = binding!!.editText.text.toString()
         }
     }
 

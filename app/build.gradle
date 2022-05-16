@@ -33,6 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.gongtong'
 }
 
 apply plugin: 'com.android.application'
