@@ -1,33 +1,28 @@
-package com.gongtong.emergency
+package com.gongtong.commuboard
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gongtong.*
 import com.gongtong.R
-import com.gongtong.databinding.FragmentCommuboardBinding
-import com.gongtong.databinding.FragmentEmergencyBinding
-import com.gongtong.databinding.ItemRecyclerBinding
+import com.gongtong.databinding.ActivityMainBinding
+import com.gongtong.databinding.FragmentVerbBinding
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
-class EmergencyFragment : Fragment(R.layout.fragment_emergency) {
+class VerbFragment : Fragment(R.layout.fragment_verb) {
     private lateinit var articleDB: DatabaseReference
     private lateinit var gridAdapter: GridAdapter
-    private var binding: FragmentEmergencyBinding? = null
+    private var binding: FragmentVerbBinding? = null
     private val gridList = mutableListOf<GridData>()
-
 
     private val listener = object : ChildEventListener {
 
@@ -60,9 +55,18 @@ class EmergencyFragment : Fragment(R.layout.fragment_emergency) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val fragmentEmergencyBinding = FragmentEmergencyBinding.bind(view)
-        binding = fragmentEmergencyBinding
+        val fragmentVerbBinding = FragmentVerbBinding.bind(view)
+        binding = fragmentVerbBinding
+/*
+        val mActivity = activity as MainActivity
+        binding!!.noun.setOnClickListener {
+            mActivity.replaceFragment(CommuboardFragment(),-1)
+        }
 
+        binding!!.verb.setOnClickListener {
+            mActivity.replaceFragment(VerbFragment(),0)
+        }
+ */
         gridList.clear() //리스트 초기화;
 
         initDB()
@@ -75,13 +79,36 @@ class EmergencyFragment : Fragment(R.layout.fragment_emergency) {
     }
 
     private fun initDB() {
-        articleDB = Firebase.database.reference.child("emergency")// 디비 가져오기;
+        articleDB = Firebase.database.reference.child("represent").child("r_verb")// 디비 가져오기;
     }
 
     private fun initArticleAdapter() {
+        val result = arguments?.getInt("result")
         gridAdapter = GridAdapter {gridList->
-            val mActivity = activity as MainActivity
-            mActivity.receiveData(gridList.name)
+            if (gridList.name=="동물/식물") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 18)
+            }
+            if (gridList.name=="놀이/문화/운동") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 19)
+            }
+            if (gridList.name=="음식") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 20)
+            }
+            if (gridList.name=="가구/전자제품") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 21)
+            }
+            if (gridList.name=="사람/직업") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 22)
+            }
+            if (gridList.name=="교통/장소/위치") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 23)
+            }
+            if (gridList.name=="모양/색깔") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 24)
+            }
+            if (gridList.name=="날씨/시간") {
+                (activity as MainActivity).replaceFragment(DetailFragment(), 25)
+            }
         }
     }
     private fun initArticleRecyclerView() {

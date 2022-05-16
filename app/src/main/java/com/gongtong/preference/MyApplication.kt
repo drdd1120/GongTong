@@ -1,4 +1,4 @@
-package com.gongtong
+package com.gongtong.preference
 
 import android.app.Application
 
