@@ -1,46 +1,23 @@
 package com.gongtong.settings
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.SeekBar
+import android.util.Log
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
-import com.gongtong.MainActivity
-import com.gongtong.MyApplication
+import androidx.appcompat.app.AppCompatActivity
 import com.gongtong.R
-import com.gongtong.databinding.FragmentSettingBinding
-import com.gongtong.home.HomeActivity
+import com.gongtong.databinding.ActivityVoiceSettingBinding
 
-
-class SettingFragment : Fragment() {
-
-    private var mainActivity: MainActivity? = null
-    private var binding: FragmentSettingBinding? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-
-    }
+class VoiceSettingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityVoiceSettingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
+        binding = ActivityVoiceSettingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val mBinding = FragmentSettingBinding.inflate(inflater, container, false)
-        binding = mBinding
-        return binding?.root
-    }
-
-    override fun onResume() {
         var voiceChoice = HashMap<String, String>()
         //남자
         voiceChoice.put("민상", "nminsang")
@@ -89,7 +66,7 @@ class SettingFragment : Fragment() {
         binding!!.men.setOnClickListener {
             val items = arrayOf("기효", "민상", "성훈", "승표", "시윤", "신우", "영일", "원탁", "재욱", "종현", "주안", "준영", "지환", "지훈", "진호", "태진")
             var selectedItem: String? = null
-            val builder = AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(this)
                 .setTitle("남성 음성선택")
                 .setSingleChoiceItems(items, 0){ dialog, which ->
                     selectedItem = items[which]
@@ -99,14 +76,11 @@ class SettingFragment : Fragment() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        var voice = voiceChoice.get(selectedItem)
-                        if (voice != null) {
-                            MyApplication.prefs.setString("voice", voice)
-                        }
-                        Toast.makeText(context, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()//삭제할부분
+                        voiceChoice.get(selectedItem)
+                        Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(context, "취소누름", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "취소누름", Toast.LENGTH_SHORT).show()
                 })
             builder.show()
         }
@@ -114,7 +88,7 @@ class SettingFragment : Fragment() {
         binding!!.women.setOnClickListener {
             val items = arrayOf("고은", "기서", "늘봄", "드림", "미경", "민서", "민영", "보라", "봄달", "선경", "선희", "소현", "수진", "아라", "예진", "유진", "은영", "지원", "지윤", "혜리")
             var selectedItem: String? = null
-            val builder = AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(this)
                 .setTitle("여성 음성선택")
                 .setSingleChoiceItems(items, 0){ dialog, which ->
                     selectedItem = items[which]
@@ -124,14 +98,11 @@ class SettingFragment : Fragment() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        var voice = voiceChoice.get(selectedItem)
-                        if (voice != null) {
-                            MyApplication.prefs.setString("voice", voice)
-                        }
-                        Toast.makeText(context, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()//삭제할부분
+                        voiceChoice.get(selectedItem)
+                        Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(context, "취소누름", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "취소누름", Toast.LENGTH_SHORT).show()
                 })
             builder.show()
         }
@@ -139,7 +110,7 @@ class SettingFragment : Fragment() {
         binding!!.kid.setOnClickListener {
             val items = arrayOf("가람", "다인", "하준")
             var selectedItem: String? = null
-            val builder = AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(this)
                 .setTitle("아이 음성선택")
                 .setSingleChoiceItems(items, 0){ dialog, which ->
                     selectedItem = items[which]
@@ -150,43 +121,13 @@ class SettingFragment : Fragment() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        var voice = voiceChoice.get(selectedItem)
-                        if (voice != null) {
-                            MyApplication.prefs.setString("voice", voice)
-                        }
-                        Toast.makeText(context, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()//삭제할부분
+                        voiceChoice.get(selectedItem)
+                        Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(context, "취소누름", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "취소누름", Toast.LENGTH_SHORT).show()
                 })
             builder.show()
         }
-        var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
-        binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
-        binding!!.speedSeekbarText.text = currentvoicespeed
-            binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            // 시크바를 조작하고 있는 중 작동
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding!!.speedSeekbarText.text = "$progress"
-                MyApplication.prefs.setString("voicespeed", "$progress")
-            }
-            // 시크 바를 조작하기 시작했을 때 작동
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
-                MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
-            }
-            // 시크 바 조작을 마무리했을 때 작동
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
-                MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
-            }
-        })
-
-        super.onResume()
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
     }
 }
