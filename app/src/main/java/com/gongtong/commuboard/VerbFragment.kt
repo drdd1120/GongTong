@@ -23,6 +23,7 @@ class VerbFragment : Fragment(R.layout.fragment_verb) {
     private lateinit var gridAdapter: GridAdapter
     private var binding: FragmentVerbBinding? = null
     private val gridList = mutableListOf<GridData>()
+    //test
 
     private val listener = object : ChildEventListener {
 
