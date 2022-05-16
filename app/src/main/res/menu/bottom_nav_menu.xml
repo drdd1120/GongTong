@@ -4,7 +4,11 @@
     <item
         android:id="@+id/commuboardFragment"
         android:icon="@drawable/ic_baseline_record_voice_over_24"
-        android:title="의사소통판" />
+        android:title="명사" />
+    <item
+        android:id="@+id/verbFragment"
+        android:icon="@drawable/ic_baseline_record_voice_over_24"
+        android:title="동사"/>
 
     <item
         android:id="@+id/everydaylifeFragment"
@@ -17,7 +21,7 @@
         android:title="긴급상황" />
 
     <item
-        android:id="@+id/settingFragment"
+        android:id="@+id/voicesettingActivity"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="설정" />
 

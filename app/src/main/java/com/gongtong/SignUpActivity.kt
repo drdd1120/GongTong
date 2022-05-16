@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import com.gongtong.databinding.ActivitySignUpBinding
+import com.gongtong.preference.MyApplication
 import com.google.firebase.firestore.FirebaseFirestore
 
 private var firebaseFirestore: FirebaseFirestore? = null
@@ -99,6 +100,9 @@ class SignUpActivity : AppCompatActivity() {
             userDTO.name = binding.name.text.toString()
             userDTO.birth = binding.birth.text.toString()
             userDTO.phone = binding.phone.text.toString()
+
+            var phonenumber = userDTO.phone!!
+            MyApplication.prefs.setString("prefphonenumber", phonenumber)
 
             var key = userDTO.birth!!.plus(userDTO.phone!!)
             MyApplication.prefs.setString("prefkey", key)
