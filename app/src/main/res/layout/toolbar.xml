@@ -10,7 +10,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:theme="@style/Theme.Test.AppBarOverlay">
+        android:theme="@style/Theme.Test.AppBarOverlay"
+        tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/home_toolbar"
