@@ -2,21 +2,14 @@ package com.gongtong.settings
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.Menu
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gongtong.MyApplication
-import com.gongtong.R
+import com.gongtong.preference.MyApplication
 import com.gongtong.databinding.ActivityVoiceSettingBinding
 
 class VoiceSettingActivity : AppCompatActivity() {

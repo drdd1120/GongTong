@@ -1,4 +1,4 @@
-package com.gongtong
+package com.gongtong.preference
 
 import android.content.Context
 import android.content.SharedPreferences

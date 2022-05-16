@@ -7,210 +7,210 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".settings.VoiceSettingActivity">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Test.AppBarOverlay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".settings.VoiceSettingActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Test.PopupOverlay" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Test.AppBarOverlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <View
-        android:id="@+id/subView"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:background="#808080"
-        app:layout_constraintTop_toBottomOf="@+id/womenText" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.Test.PopupOverlay" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-    <View
-        android:id="@+id/subView2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:background="#808080"
-        app:layout_constraintTop_toBottomOf="@+id/speedSeekbarText" />
+        <View
+            android:id="@+id/subView"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="#808080"
+            app:layout_constraintTop_toBottomOf="@+id/womenText" />
 
-    <TextView
-        android:id="@+id/voiceSettingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:paddingStart="4dp"
-        android:text="음성설정"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:ignore="MissingConstraints" />
+        <View
+            android:id="@+id/subView2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="#808080"
+            app:layout_constraintTop_toBottomOf="@+id/speedSeekbarText" />
 
-    <android.widget.Button
-        android:id="@+id/men"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/dad"
-        app:layout_constraintBottom_toBottomOf="@+id/women"
-        app:layout_constraintEnd_toStartOf="@+id/women"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/women" />
+        <TextView
+            android:id="@+id/voiceSettingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:paddingStart="4dp"
+            android:text="음성설정"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/menText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:text="남성"
-        app:layout_constraintTop_toBottomOf="@+id/men"
-        app:layout_constraintStart_toStartOf="@+id/men"
-        app:layout_constraintEnd_toEndOf="@+id/men"
-        tools:ignore="MissingConstraints" />
+        <android.widget.Button
+            android:id="@+id/men"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/dad"
+            app:layout_constraintBottom_toBottomOf="@+id/women"
+            app:layout_constraintEnd_toStartOf="@+id/women"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/women" />
 
-    <android.widget.Button
-        android:id="@+id/women"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/mom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voiceSettingText" />
+        <TextView
+            android:id="@+id/menText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="남성"
+            app:layout_constraintTop_toBottomOf="@+id/men"
+            app:layout_constraintStart_toStartOf="@+id/men"
+            app:layout_constraintEnd_toEndOf="@+id/men"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/womenText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:text="여성"
-        app:layout_constraintTop_toBottomOf="@+id/women"
-        app:layout_constraintStart_toStartOf="@+id/women"
-        app:layout_constraintEnd_toEndOf="@+id/women"
-        tools:ignore="MissingConstraints" />
+        <android.widget.Button
+            android:id="@+id/women"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/mom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/voiceSettingText" />
 
-    <android.widget.Button
-        android:id="@+id/kid"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/daughter"
-        app:layout_constraintBottom_toBottomOf="@+id/women"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/women"
-        app:layout_constraintTop_toTopOf="@+id/women" />
+        <TextView
+            android:id="@+id/womenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="여성"
+            app:layout_constraintTop_toBottomOf="@+id/women"
+            app:layout_constraintStart_toStartOf="@+id/women"
+            app:layout_constraintEnd_toEndOf="@+id/women"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/kidText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:text="아이"
-        app:layout_constraintTop_toBottomOf="@+id/kid"
-        app:layout_constraintStart_toStartOf="@+id/kid"
-        app:layout_constraintEnd_toEndOf="@+id/kid"
-        tools:ignore="MissingConstraints" />
+        <android.widget.Button
+            android:id="@+id/kid"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/daughter"
+            app:layout_constraintBottom_toBottomOf="@+id/women"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/women"
+            app:layout_constraintTop_toTopOf="@+id/women" />
 
-    <TextView
-        android:id="@+id/speedSettingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:paddingStart="4dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="속도설정"
-        app:layout_constraintTop_toBottomOf="@+id/subView"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/kidText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="아이"
+            app:layout_constraintTop_toBottomOf="@+id/kid"
+            app:layout_constraintStart_toStartOf="@+id/kid"
+            app:layout_constraintEnd_toEndOf="@+id/kid"
+            tools:ignore="MissingConstraints" />
 
-    <SeekBar
-        android:id="@+id/speedSeekbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:max="3"
-        android:min="-3"
-        app:layout_constraintTop_toBottomOf="@+id/speedSettingText" />
+        <TextView
+            android:id="@+id/speedSettingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:paddingStart="4dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="속도설정"
+            app:layout_constraintTop_toBottomOf="@+id/subView"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/speedSeekbarText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/subView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speedSeekbar" />
+        <SeekBar
+            android:id="@+id/speedSeekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:max="3"
+            android:min="-3"
+            app:layout_constraintTop_toBottomOf="@+id/speedSettingText" />
 
-    <TextView
-        android:id="@+id/phoneSettingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:paddingStart="4dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="보호자 연락처 변경"
-        app:layout_constraintTop_toBottomOf="@+id/subView2"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/speedSeekbarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/subView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/speedSeekbar" />
 
-    <EditText
-        android:id="@+id/modify_phoneNumber"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_round"
-        android:hint="010xxxxyyyy"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:padding="10dp"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneSettingText" />
+        <TextView
+            android:id="@+id/phoneSettingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:paddingStart="4dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="보호자 연락처 변경"
+            app:layout_constraintTop_toBottomOf="@+id/subView2"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/phoneTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        app:layout_constraintStart_toStartOf="@+id/modify_phoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/modify_phoneNumber"
-        android:textSize="10dp"/>
+        <EditText
+            android:id="@+id/modify_phoneNumber"
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_round"
+            android:hint="010xxxxyyyy"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:padding="10dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneSettingText" />
 
-    <Button
-        android:id="@+id/btn_modify"
-        android:backgroundTint="#66A2D8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="변경"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modify_phoneNumber"/>
+        <TextView
+            android:id="@+id/phoneTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            app:layout_constraintStart_toStartOf="@+id/modify_phoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/modify_phoneNumber"
+            android:textSize="10dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_modify"
+            android:backgroundTint="#66A2D8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:text="변경"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/modify_phoneNumber"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

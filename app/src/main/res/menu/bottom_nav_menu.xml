@@ -4,7 +4,11 @@
     <item
         android:id="@+id/commuboardFragment"
         android:icon="@drawable/ic_baseline_record_voice_over_24"
-        android:title="의사소통판" />
+        android:title="명사" />
+    <item
+        android:id="@+id/verbFragment"
+        android:icon="@drawable/ic_baseline_record_voice_over_24"
+        android:title="동사"/>
 
     <item
         android:id="@+id/everydaylifeFragment"

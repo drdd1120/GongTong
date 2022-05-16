@@ -3,22 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/commuboardFragment">
+    app:startDestination="@id/commuboardFragment"
+    app:defaultNavHost="false">
     <fragment
         android:id="@+id/commuboardFragment"
-        android:name="com.gongtong.commuboard.commuboardFragment"
-        android:label="의사소통판"
-        tools:layout="@layout/fragment_commuboard" >
-        <action
-            android:id="@+id/action_commuboardFragment_to_emergencyFragment"
-            app:destination="@id/emergencyFragment" />
-        <action
-            android:id="@+id/action_commuboardFragment_to_voiceSettingActivity"
-            app:destination="@id/voicesettingActivity" />
-        <action
-            android:id="@+id/action_commuboardFragment_to_everydaylifeFragment"
-            app:destination="@id/everydaylifeFragment" />
-    </fragment>
+        android:name="com.gongtong.commuboard.CommuboardFragment"
+        android:label="명사"
+        tools:layout="@layout/fragment_commuboard" />
+    <fragment
+        android:id="@+id/verbFragment"
+        android:name="com.gongtong.commuboard.VerbFragment"
+        android:label="동사"
+        tools:layout="@layout/fragment_emergency" />
     <fragment
         android:id="@+id/everydaylifeFragment"
         android:name="com.gongtong.everydaylife.EverydayLifeFragment"
@@ -35,4 +31,11 @@
         android:name="com.gongtong.settings.VoiceSettingActivity"
         android:label="설정"
         tools:layout="@layout/activity_voice_setting" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.gongtong.commuboard.DetailFragment"
+        android:label="디테일"
+        tools:layout="@layout/fragment_detail">
+    </fragment>
 </navigation>
