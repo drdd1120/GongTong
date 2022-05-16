@@ -1,165 +1,107 @@
 package com.gongtong.commuboard
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.media.MediaPlayer
-import android.os.AsyncTask
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.Toast
-import com.gongtong.MainActivity
-import com.gongtong.MyApplication
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.gongtong.GridAdapter
+import com.gongtong.GridData
 import com.gongtong.R
-import com.gongtong.databinding.ActivityHomeBinding
+import com.gongtong.SignUpActivity
 import com.gongtong.databinding.FragmentCommuboardBinding
-import com.gongtong.databinding.FragmentSettingBinding
-import com.gongtong.home.HomeActivity
-import com.gongtong.settings.VoiceSettingActivity
-import java.io.*
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
-var Tag: String = "HomeActivity"
-val audioPlay = MediaPlayer()
-private var statusProgress: ProgressBar?=null;
-var gText: String? = null
-
-
-class commuboardFragment : Fragment() {
-
-    private var mainActivity: MainActivity? = null
+class commuboardFragment : Fragment(R.layout.fragment_commuboard) {
+    private lateinit var articleDB: DatabaseReference
+    private lateinit var gridAdapter: GridAdapter
     private var binding: FragmentCommuboardBinding? = null
+    private val gridList = mutableListOf<GridData>()
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
+    private val listener = object : ChildEventListener {
+        override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+            val articleModel = snapshot.getValue(GridData::class.java)
+            articleModel ?: return
+
+            gridList.add(articleModel) // 리스트에 새로운 항목을 더해서;
+            gridAdapter.submitList(gridList) // 어뎁터 리스트에 등록;
+
+            val mLayoutManager = GridLayoutManager(activity,3)
+            //mLayoutManager.reverseLayout = true
+            //mLayoutManager.stackFromEnd = true
+            binding?.recyclerView?.setLayoutManager(mLayoutManager)
+        }
+
+        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+
+        override fun onChildRemoved(snapshot: DataSnapshot) {}
+
+        override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+        override fun onCancelled(error: DatabaseError) {}
+
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val fragmentCommuboardBinding = FragmentCommuboardBinding.bind(view)
+        binding = fragmentCommuboardBinding
 
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val mBinding = FragmentCommuboardBinding.inflate(inflater, container, false)
-        binding = mBinding
-        return binding?.root
+        gridList.clear() //리스트 초기화;
+
+        initDB()
+
+        initArticleAdapter()
+
+        initArticleRecyclerView()
+
+        initListener()
     }
 
+    private fun initDB() {
+        articleDB = Firebase.database.reference.child("represent").child("r_noun")// 디비 가져오기;
+    }
+
+    private fun initArticleAdapter() {
+        gridAdapter = GridAdapter { GridData ->
+            Intent(activity, SignUpActivity()::class.java).apply {
+                putExtra("title", GridData.name)
+                putExtra("imageurl", GridData.image_url)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }.run { context?.startActivity(this) }
+        }
+    }
+    private fun initArticleRecyclerView() {
+        // activity 일 때는 그냥 this 로 넘겼지만 (그자체가 컨텍스트라서) 그러나
+        // 프레그 먼트의 경우에는 아래처럼. context
+        binding ?: return
+        binding!!.recyclerView.layoutManager = GridLayoutManager(context,3)
+        binding!!.recyclerView.adapter = gridAdapter
+    }
+
+    private fun initListener() {
+        articleDB.addChildEventListener(listener)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        statusProgress = this.binding!!.progressBar1
-        binding!!.button.setOnClickListener {
-            gText = binding!!.editText.text.toString()
-            if (gText == "") {
-                Toast.makeText(context, "알림: 텍스트를 입력해 주세요.", Toast.LENGTH_LONG).show()
-            }
-            //AsyncTask를 수행한다.
-            AsyncTaskExample().execute(gText)
-        }
+        val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
+        //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 0))
+        //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 1))
+        gridAdapter.notifyDataSetChanged() // view 를 다시 그림;
+
     }
 
-    inner class AsyncTaskExample : AsyncTask<String, String, String>() {
-        override fun onPreExecute() {
-            super.onPreExecute()
-
-            statusProgress?.visibility = View.VISIBLE
-        }
-
-        override fun doInBackground(vararg params: String?): String {
-
-            val voice = MyApplication.prefs.getString("voice", "ntaejin")
-            val voicespeed = MyApplication.prefs.getString("voicespeed", "0")
-
-            //APIExamTTS.main(args)
-            val clientId = "m2b9osigjy"//애플리케이션 클라이언트 아이디값";
-            val clientSecret = "l6GSek9Y6xMOU3rEhncHM91nPLN0xv0GmCtWtgEq"//애플리케이션 클라이언트 시크릿값";
-            try {
-                val text = URLEncoder.encode(params[0], "UTF-8")
-
-                val apiURL = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts"
-                val url = URL(apiURL)
-                val con = url.openConnection() as HttpURLConnection
-                con.requestMethod = "POST"
-                con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId)
-                con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret)
-                // post request
-                val postParams =
-                    "speaker=$voice&volume=0&speed=$voicespeed&pitch=0&format=mp3&text=$text"
-                con.doOutput = true
-                val wr = DataOutputStream(con.outputStream)
-                wr.writeBytes(postParams)
-                wr.flush()
-                wr.close()
-                val responseCode = con.responseCode
-                val br: BufferedReader
-                if (responseCode == 200) { // 정상 호출
-                    val iss = con.inputStream
-                    var read = 0
-                    val bytes = ByteArray(1024)
-                    // 랜덤한 이름으로 mp3 파일 생성
-                    val dir = File(activity?.getExternalFilesDir(null), "NaverClova")
-                    if (!dir.exists()) {
-                        dir.mkdirs()
-                    }
-
-                    val tempname = File("naverclova.mp3")
-                    val f =
-                        File(activity?.getExternalFilesDir(null).toString() + File.separator + "NaverClova/$tempname")
-                    f.createNewFile()
-                    val outputStream = FileOutputStream(f)
-                    while (iss.read(bytes).also { read = it } != -1) {
-                        outputStream.write(bytes, 0, read)
-                    }
-                    iss.close()
-
-                    val filename = "${activity?.getExternalFilesDir(null)}/NaverClova/$tempname"
-                    audioPlay.reset()
-                    audioPlay.setDataSource(filename)
-                    audioPlay.prepare()
-                    audioPlay.start()
-
-
-                } else {  // 오류 발생
-                    br = BufferedReader(InputStreamReader(con.errorStream))
-                    var inputLine: String?
-                    val response = StringBuffer()
-                    while (br.readLine().also { inputLine = it } != null) {
-                        response.append(inputLine)
-                    }
-                    br.close()
-                    println(response.toString())
-                }
-            } catch (e: Exception) {
-                println(e)
-            }
-            return ""
-        }
-
-        override fun onProgressUpdate(vararg values: String?) {
-            super.onProgressUpdate(*values)
-        }
-
-        override fun onPostExecute(result: String?) {
-            super.onPostExecute(result)
-
-            statusProgress?.visibility = View.GONE
-            //
-            binding!!.editText.setHint(gText)
-            binding!!.editText.setText("")
-        }
-    }
-
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
+        articleDB.removeEventListener(listener)
     }
 }

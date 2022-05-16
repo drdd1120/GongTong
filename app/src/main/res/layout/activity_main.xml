@@ -22,6 +22,38 @@
             app:popupTheme="@style/Theme.Test.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:hint="텍스트를 입력하세요."
+            android:lines="4"
+            android:minLines="2"
+            android:maxLines="16"
+            android:scrollbars="vertical"
+            android:text="안녕하세요"
+            app:layout_constraintHorizontal_bias="0.518"
+            />
+
+        <ImageButton
+            android:id="@+id/speekbutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/ic_baseline_volume_up_24" />
+    </LinearLayout>
+
     <fragment
         android:id="@+id/fragment_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -39,9 +71,5 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 </LinearLayout>

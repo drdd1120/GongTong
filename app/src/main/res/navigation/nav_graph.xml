@@ -15,7 +15,15 @@
         <action
             android:id="@+id/action_commuboardFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_commuboardFragment_to_everydaylifeFragment"
+            app:destination="@id/everydaylifeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/everydaylifeFragment"
+        android:name="com.gongtong.everydaylife.EverydayLifeFragment"
+        android:label="일상생활"
+        tools:layout="@layout/fragment_emergency" />
     <fragment
         android:id="@+id/emergencyFragment"
         android:name="com.gongtong.emergency.EmergencyFragment"
