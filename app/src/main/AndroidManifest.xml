@@ -13,10 +13,8 @@
         android:label="Gongtong"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GongTong">
-        <activity
-            android:name=".settings.VoiceSettingActivity"
-            android:exported="false" />
+        android:theme="@style/Theme.GongTong"
+        >
         <activity
             android:name=".settings.VoiceSettingActivity"
             android:exported="false" />
@@ -41,4 +39,5 @@
         </activity>
     </application>
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

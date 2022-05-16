@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:weightSum="1"
-    android:background="#FFFFFF"
-    android:clickable="true">
+    android:weightSum="1">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:theme="@style/Theme.Test.AppBarOverlay"
-        tools:ignore="MissingConstraints">
+        android:theme="@style/Theme.Test.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,27 +22,37 @@
             app:popupTheme="@style/Theme.Test.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="텍스트를 입력하세요."
-        android:maxLines="16"
-        android:minLines="2"
-        android:text="상징이 이곳에 입력됨."
-        app:layout_constraintEnd_toStartOf="@+id/speaker"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar" />
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/speaker"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/ic_baseline_volume_up_24"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:hint="텍스트를 입력하세요."
+            android:lines="4"
+            android:minLines="2"
+            android:maxLines="16"
+            android:scrollbars="vertical"
+            android:text="안녕하세요"
+            app:layout_constraintHorizontal_bias="0.518"
+            />
+
+        <ImageButton
+            android:id="@+id/speekbutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/ic_baseline_volume_up_24" />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment_host"
@@ -55,20 +60,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"
         />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

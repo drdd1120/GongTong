@@ -7,8 +7,13 @@
         android:title="의사소통판" />
 
     <item
+        android:id="@+id/everydaylifeFragment"
+        android:icon="@drawable/ic_baseline_connect_without_contact_24"
+        android:title="일상생활" />
+
+    <item
         android:id="@+id/emergencyFragment"
-        android:icon="@drawable/ic_baseline_record_voice_over_24"
+        android:icon="@drawable/ic_baseline_warning_24"
         android:title="긴급상황" />
 
     <item
