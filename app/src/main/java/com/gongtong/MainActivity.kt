@@ -17,14 +17,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.gongtong.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.gongtong.preference.MyApplication
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -34,32 +29,19 @@ private lateinit var binding: ActivityMainBinding
 private var statusProgress: ProgressBar?=null;
 var gText: String? = null
 val audioPlay = MediaPlayer()
+var backKeyPressedTime : Long = 0
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false);
-        val navView: BottomNavigationView = binding.bottomNavView
-        val navController = findNavController(R.id.fragment_host)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.commuboardFragment,
-                R.id.emergencyFragment,
-                R.id.settingFragment,
-                R.id.everydaylifeFragment
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        initNavigation()
 
         var prefKey = MyApplication.prefs.getString("prefkey", "")
 
         if (prefKey != "") {
-            //추후 삭제해야됨
-            Toast.makeText(this, prefKey.toString(), Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, prefKey.toString(), Toast.LENGTH_SHORT).show()
         } else {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
@@ -73,6 +55,10 @@ class MainActivity : AppCompatActivity() {
             //AsyncTask를 수행한다.
             AsyncTaskExample().execute(gText)
         }
+    }
+    private fun initNavigation() {
+        val navController = findNavController(R.id.fragment_host)
+        binding.bottomNavView.setupWithNavController(navController)
     }
 
     inner class AsyncTaskExample : AsyncTask<String, String, String>() {
@@ -222,19 +208,42 @@ class MainActivity : AppCompatActivity() {
 
 
     //프래그먼트에서 값전달받아서 edittext에 넣기
-    /*
     fun receiveData(tmp:String){
         val tmp2 = binding.editText.text.toString()
-        binding.editText.setText(tmp2.plus(tmp))
+        binding.editText.setText(tmp2.plus(" ").plus(tmp))
     }
-    */
 
+    //네이게이션바 숨김 메소드
+    fun HideBottomNavi(state: Boolean){
+        if(state) binding.bottomNavView.visibility = View.GONE else binding.bottomNavView.visibility = View.VISIBLE
+    }
 
     //프래그먼트 이동 메소드
-    fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment, result: Int) {
+        var bundle = Bundle()
+        bundle.putInt("result",result)
+        fragment.arguments = bundle
         val fragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_host, fragment)
         fragmentTransaction.addToBackStack(null).commit()
     }
+
+    override fun onBackPressed() {
+        val fragmentManager = supportFragmentManager
+        if(fragmentManager.backStackEntryCount==0){
+            if(System.currentTimeMillis() - backKeyPressedTime >=2000 ) {
+                backKeyPressedTime = System.currentTimeMillis()
+                Toast.makeText(this, "'뒤로' 버튼을 한번 더 누르시면 앱이 종료됩니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                super.onBackPressed()
+                finish() //액티비티 종료
+            }
+        }
+        else{
+            super.onBackPressed()
+        }
+    }
 }
+
+
