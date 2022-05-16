@@ -17,7 +17,7 @@
         android:title="긴급상황" />
 
     <item
-        android:id="@+id/settingFragment"
+        android:id="@+id/voicesettingActivity"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="설정" />
 

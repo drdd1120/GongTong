@@ -100,6 +100,9 @@ class SignUpActivity : AppCompatActivity() {
             userDTO.birth = binding.birth.text.toString()
             userDTO.phone = binding.phone.text.toString()
 
+            var phonenumber = userDTO.phone!!
+            MyApplication.prefs.setString("prefphonenumber", phonenumber)
+
             var key = userDTO.birth!!.plus(userDTO.phone!!)
             MyApplication.prefs.setString("prefkey", key)
 

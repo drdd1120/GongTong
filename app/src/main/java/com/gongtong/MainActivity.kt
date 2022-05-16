@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.commuboardFragment,
                 R.id.emergencyFragment,
-                R.id.settingFragment,
+                R.id.voicesettingActivity,
                 R.id.everydaylifeFragment
             )
         )

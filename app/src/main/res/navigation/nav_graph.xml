@@ -13,8 +13,8 @@
             android:id="@+id/action_commuboardFragment_to_emergencyFragment"
             app:destination="@id/emergencyFragment" />
         <action
-            android:id="@+id/action_commuboardFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
+            android:id="@+id/action_commuboardFragment_to_voiceSettingActivity"
+            app:destination="@id/voicesettingActivity" />
         <action
             android:id="@+id/action_commuboardFragment_to_everydaylifeFragment"
             app:destination="@id/everydaylifeFragment" />
@@ -30,9 +30,9 @@
         android:label="긴급상황"
         tools:layout="@layout/fragment_emergency" />
 
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.gongtong.settings.SettingFragment"
+    <activity
+        android:id="@+id/voicesettingActivity"
+        android:name="com.gongtong.settings.VoiceSettingActivity"
         android:label="설정"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/activity_voice_setting" />
 </navigation>
