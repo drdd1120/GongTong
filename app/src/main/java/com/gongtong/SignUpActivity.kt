@@ -39,12 +39,11 @@ class SignUpActivity : AppCompatActivity() {
                     binding.btnRegister.isEnabled = false
                 }
             }
-
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
-        //날짜
+        //생년월일
         binding.birth.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 val birth = binding.birth.text.toString()
@@ -60,12 +59,9 @@ class SignUpActivity : AppCompatActivity() {
                     binding.btnRegister.isEnabled = false
                 }
             }
-
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
-
 
         //전화번호
         binding.phone.addTextChangedListener(object : TextWatcher {
@@ -83,9 +79,7 @@ class SignUpActivity : AppCompatActivity() {
                     binding.btnRegister.isEnabled = false
                 }
             }
-
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
@@ -117,8 +111,6 @@ class SignUpActivity : AppCompatActivity() {
                         Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
                     }
             }
-
         }
-
     }
 }

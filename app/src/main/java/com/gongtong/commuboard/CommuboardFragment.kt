@@ -6,7 +6,6 @@ import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gongtong.*
@@ -25,7 +24,6 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
 
 
     private val listener = object : ChildEventListener {
-
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
             val articleModel = snapshot.getValue(GridData::class.java)
             articleModel ?: return
@@ -41,40 +39,20 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
             //mLayoutManager.stackFromEnd = true
             binding?.recyclerView?.setLayoutManager(mLayoutManager)
         }
-
-
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-
         override fun onChildRemoved(snapshot: DataSnapshot) {}
-
         override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-
         override fun onCancelled(error: DatabaseError) {}
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val fragmentCommuboardBinding = FragmentCommuboardBinding.bind(view)
         binding = fragmentCommuboardBinding
-        /*
-        val mActivity = activity as MainActivity
-        binding!!.noun.setOnClickListener {
-            mActivity.replaceFragment(CommuboardFragment(),-1)
-        }
-
-        binding!!.verb.setOnClickListener {
-            mActivity.replaceFragment(VerbFragment(),0)
-        }
-         */
-        gridList.clear() //리스트 초기화;
-
+        gridList.clear()
         initDB()
-
         initArticleAdapter()
-
         initArticleRecyclerView()
-
         initListener()
     }
 
@@ -161,8 +139,8 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 0)) //리사이클러뷰 가로
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 1)) //리사이클러뷰 세로
         gridAdapter.notifyDataSetChanged() // view 를 다시 그림;
-
     }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
      if (resources.configuration.orientation == ORIENTATION_LANDSCAPE) { // landscape
@@ -175,15 +153,5 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
     override fun onDestroy() {
         super.onDestroy()
         articleDB.removeEventListener(listener)
-    }
-    fun parentreplace(fragment:Fragment, res:Int){
-        parentFragmentManager.beginTransaction().apply{
-            var bundle = Bundle()
-            bundle.putInt("result",res)
-            fragment.arguments = bundle
-            replace(R.id.fragment_host, DetailFragment())
-            addToBackStack(null)
-            commit()
-        }
     }
 }
