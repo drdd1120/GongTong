@@ -151,8 +151,7 @@ class MainActivity : AppCompatActivity() {
             super.onPostExecute(result)
             statusProgress?.visibility = View.GONE
             //
-            binding!!.editText.setHint(gText)
-            binding!!.editText.setText("")
+            binding!!.editText.setText(gText)
         }
     }
 
