@@ -22,35 +22,49 @@
             app:popupTheme="@style/Theme.Test.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
-            android:layout_weight="1"
             android:id="@+id/editText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
             android:layout_marginStart="16dp"
-
             android:hint="글자를 입력하세요."
+            android:backgroundTint = "@color/teal_200"
             android:lines="4"
-            android:minLines="2"
             android:maxLines="16"
+            android:minLines="2"
             android:scrollbars="vertical"
-            app:layout_constraintHorizontal_bias="0.518"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/delete_text_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/delete_text_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/ic_baseline_delete_text_24"
+            android:backgroundTint="#EAEAEA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:layout_constraintEnd_toStartOf="@+id/speekbutton"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/speekbutton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/ic_baseline_volume_up_24" />
-    </LinearLayout>
+            android:background="@drawable/ic_baseline_volume_up_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <fragment
         android:id="@+id/fragment_host"

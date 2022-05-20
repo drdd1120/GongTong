@@ -145,21 +145,40 @@ class VoiceSettingActivity : AppCompatActivity() {
         var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
         binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
         binding!!.speedSeekbarText.text = currentvoicespeed
+        if(currentvoicespeed.equals("-3")){
+            binding!!.speedSeekbarText.text = "매우 느림"
+        } else if(currentvoicespeed.equals("-2")){
+            binding!!.speedSeekbarText.text = "느림"
+        } else if(currentvoicespeed.equals("-1")){
+            binding!!.speedSeekbarText.text = "약간 느림"
+        } else if(currentvoicespeed.equals("0")){
+            binding!!.speedSeekbarText.text = "보통"
+        } else if(currentvoicespeed.equals("1")){
+            binding!!.speedSeekbarText.text = "약간 빠름"
+        } else if(currentvoicespeed.equals("2")){
+            binding!!.speedSeekbarText.text = "빠름"
+        } else if(currentvoicespeed.equals("3")){
+            binding!!.speedSeekbarText.text = "매우 빠름"
+        }
+
         binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             // 시크바를 조작하고 있는 중 작동
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding!!.speedSeekbarText.text = "$progress"
                 MyApplication.prefs.setString("voicespeed", "$progress")
+                SeekBarText()
             }
             // 시크 바를 조작하기 시작했을 때 작동
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
                 MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
+                SeekBarText()
             }
             // 시크 바 조작을 마무리했을 때 작동
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
                 MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
+                SeekBarText()
             }
         })
 
@@ -191,6 +210,25 @@ class VoiceSettingActivity : AppCompatActivity() {
                 MyApplication.prefs.setString("prefphonenumber", phone)
                 Toast.makeText(this, "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    // seekbar 동작 중 및 동작 완료 시 텍스트 처리
+    private fun SeekBarText() {
+        if(binding!!.speedSeekbarText.text.equals("-3")){
+            binding!!.speedSeekbarText.text = "매우 느림"
+        } else if(binding!!.speedSeekbarText.text.equals("-2")){
+            binding!!.speedSeekbarText.text = "느림"
+        } else if(binding!!.speedSeekbarText.text.equals("-1")){
+            binding!!.speedSeekbarText.text = "약간 느림"
+        } else if(binding!!.speedSeekbarText.text.equals("0")){
+            binding!!.speedSeekbarText.text = "보통"
+        } else if(binding!!.speedSeekbarText.text.equals("1")){
+            binding!!.speedSeekbarText.text = "약간 빠름"
+        } else if(binding!!.speedSeekbarText.text.equals("2")){
+            binding!!.speedSeekbarText.text = "빠름"
+        } else if(binding!!.speedSeekbarText.text.equals("3")){
+            binding!!.speedSeekbarText.text = "매우 빠름"
         }
     }
 }

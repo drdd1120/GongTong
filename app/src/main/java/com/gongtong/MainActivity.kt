@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         //네비게이션메뉴 적용
         initNavigation()
         //sharedPreference 값확인, 없으면 회원가입으로, 있으면 메인으로
+
         var prefKey = MyApplication.prefs.getString("prefkey", "")
         if (prefKey != "") {
             //토스트 메세지 출력 테스트
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         } else {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+        }
+
+        // 글자 한번에 지우기
+        binding!!.deleteTextButton.setOnClickListener{
+            binding!!.editText.setText(null)
         }
 
         //스피커버튼 네이버클로바 음성출력
@@ -76,7 +82,8 @@ class MainActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg params: String?): String {
             val voice = MyApplication.prefs.getString("voice", "ntaejin")
-            val voicespeed = MyApplication.prefs.getString("voicespeed", "0")
+            var tmp = MyApplication.prefs.getString("voicespeed", "0").toInt()*-1
+            var voicespeed = tmp.toString()
 
             //APIExamTTS.main(args)
             val clientId = "g98fbfgxwm"//애플리케이션 클라이언트 아이디값";
@@ -126,7 +133,6 @@ class MainActivity : AppCompatActivity() {
                     audioPlay.prepare()
                     audioPlay.start()
 
-
                 } else {  // 오류 발생
                     br = BufferedReader(InputStreamReader(con.errorStream))
                     var inputLine: String?
@@ -152,6 +158,8 @@ class MainActivity : AppCompatActivity() {
             statusProgress?.visibility = View.GONE
             //
             binding!!.editText.setText(gText)
+            //커서 항상 오른쪽으로
+            binding.editText.setSelection(binding.editText.length())
         }
     }
 
@@ -220,6 +228,8 @@ class MainActivity : AppCompatActivity() {
     fun receiveData(tmp:String){
         val tmp2 = binding.editText.text.toString()
         binding.editText.setText(tmp2.plus(" ").plus(tmp))
+        //커서 항상 오른쪽으로
+        binding.editText.setSelection(binding.editText.length())
     }
 
     //네이게이션바 숨김 메소드
