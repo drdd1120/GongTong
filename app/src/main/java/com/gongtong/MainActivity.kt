@@ -31,7 +31,7 @@ var gText: String? = null
 val audioPlay = MediaPlayer()
 var backKeyPressedTime : Long = 0
 class MainActivity : AppCompatActivity() {
-
+//김규호
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
