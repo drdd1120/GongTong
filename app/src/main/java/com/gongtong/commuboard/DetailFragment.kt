@@ -34,7 +34,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             val mLayoutManager = GridLayoutManager(context,spanCount)
             //mLayoutManager.reverseLayout = true
             //mLayoutManager.stackFromEnd = true
-            binding?.recyclerView?.setLayoutManager(mLayoutManager)
+            binding?.recyclerView?.layoutManager = mLayoutManager
         }
 
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -159,12 +159,12 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
+        //val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 0)) //리사이클러뷰 가로
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 1)) //리사이클러뷰 세로
         gridAdapter.notifyDataSetChanged() // view 를 다시 그림;
         val mainAct = activity as MainActivity
-        mainAct.HideBottomNavi(true)
+        mainAct.hideBottomNavi(true)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -182,7 +182,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         articleDB.removeEventListener(listener)
         // 네비게이션바 숨김
         val mainAct = activity as MainActivity
-        mainAct.HideBottomNavi(false)
+        mainAct.hideBottomNavi(false)
     }
 
 }

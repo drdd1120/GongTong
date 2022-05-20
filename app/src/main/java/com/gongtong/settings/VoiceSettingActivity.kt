@@ -20,7 +20,7 @@ class VoiceSettingActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false);
-        var voiceChoice = HashMap<String, String>()
+        val voiceChoice = HashMap<String, String>()
         //남자
         voiceChoice.put("민상", "nminsang")
         voiceChoice.put("신우", "nsinu")
@@ -66,7 +66,7 @@ class VoiceSettingActivity : AppCompatActivity() {
         voiceChoice.put("다인", "ndain")
         voiceChoice.put("가람", "ngaram")
 
-        binding!!.men.setOnClickListener {
+        binding.men.setOnClickListener {
             val items = arrayOf("기효", "민상", "성훈", "승표", "시윤", "신우", "영일", "원탁", "재욱", "종현", "주안", "준영", "지환", "지훈", "진호", "태진")
             var selectedItem: String? = null
             val builder = AlertDialog.Builder(this)
@@ -79,7 +79,7 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        var voice = voiceChoice.get(selectedItem)
+                        val voice = voiceChoice.get(selectedItem)
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
@@ -91,7 +91,7 @@ class VoiceSettingActivity : AppCompatActivity() {
             builder.show()
         }
 
-        binding!!.women.setOnClickListener {
+        binding.women.setOnClickListener {
             val items = arrayOf("고은", "기서", "늘봄", "드림", "미경", "민서", "민영", "보라", "봄달", "선경", "선희", "소현", "수진", "아라", "예진", "유진", "은영", "지원", "지윤", "혜리")
             var selectedItem: String? = null
             val builder = AlertDialog.Builder(this)
@@ -104,7 +104,7 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        var voice = voiceChoice.get(selectedItem)
+                        val voice = voiceChoice[selectedItem]
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
@@ -116,7 +116,7 @@ class VoiceSettingActivity : AppCompatActivity() {
             builder.show()
         }
 
-        binding!!.kid.setOnClickListener {
+        binding.kid.setOnClickListener {
             val items = arrayOf("가람", "다인", "하준")
             var selectedItem: String? = null
             val builder = AlertDialog.Builder(this)
@@ -130,7 +130,7 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if(selectedItem == null){
                             selectedItem = items[0]
                         }
-                        var voice = voiceChoice.get(selectedItem)
+                        val voice = voiceChoice.get(selectedItem)
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
@@ -142,63 +142,45 @@ class VoiceSettingActivity : AppCompatActivity() {
             builder.show()
         }
 
-        var currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
-        binding!!.speedSeekbar.setProgress(currentvoicespeed.toInt())
-        binding!!.speedSeekbarText.text = currentvoicespeed
+        val currentvoicespeed = MyApplication.prefs.getString("voicespeed", "0")
+        binding.speedSeekbar.setProgress(currentvoicespeed.toInt())
+        binding.speedSeekbarText.text = currentvoicespeed
         if(currentvoicespeed.equals("-3")){
-            binding!!.speedSeekbarText.text = "매우 느림"
+            binding.speedSeekbarText.text = "매우 느림"
         } else if(currentvoicespeed.equals("-2")){
-            binding!!.speedSeekbarText.text = "느림"
+            binding.speedSeekbarText.text = "느림"
         } else if(currentvoicespeed.equals("-1")){
-            binding!!.speedSeekbarText.text = "약간 느림"
+            binding.speedSeekbarText.text = "약간 느림"
         } else if(currentvoicespeed.equals("0")){
-            binding!!.speedSeekbarText.text = "보통"
+            binding.speedSeekbarText.text = "보통"
         } else if(currentvoicespeed.equals("1")){
-            binding!!.speedSeekbarText.text = "약간 빠름"
+            binding.speedSeekbarText.text = "약간 빠름"
         } else if(currentvoicespeed.equals("2")){
-            binding!!.speedSeekbarText.text = "빠름"
+            binding.speedSeekbarText.text = "빠름"
         } else if(currentvoicespeed.equals("3")){
-            binding!!.speedSeekbarText.text = "매우 빠름"
+            binding.speedSeekbarText.text = "매우 빠름"
         }
-        binding!!.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+        binding.speedSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             // 시크바를 조작하고 있는 중 작동
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding!!.speedSeekbarText.text = "$progress"
+                binding.speedSeekbarText.text = "$progress"
                 MyApplication.prefs.setString("voicespeed", "$progress")
                 SeekBarText()
             }
             // 시크 바를 조작하기 시작했을 때 작동
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
-                MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
+                binding.speedSeekbarText.text = "${binding.speedSeekbar.progress}"
+                MyApplication.prefs.setString("voicespeed", "${binding.speedSeekbar.progress}")
                 SeekBarText()
             }
             // 시크 바 조작을 마무리했을 때 작동
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                binding!!.speedSeekbarText.text = "${binding!!.speedSeekbar.progress}"
-                MyApplication.prefs.setString("voicespeed", "${binding!!.speedSeekbar.progress}")
+                binding.speedSeekbarText.text = "${binding.speedSeekbar.progress}"
+                MyApplication.prefs.setString("voicespeed", "${binding.speedSeekbar.progress}")
                 SeekBarText()
             }
-            fun SeekBarText() {
-                if(binding!!.speedSeekbarText.text.equals("-3")){
-                    binding!!.speedSeekbarText.text = "매우 느림"
-                } else if(binding!!.speedSeekbarText.text.equals("-2")){
-                    binding!!.speedSeekbarText.text = "느림"
-                } else if(binding!!.speedSeekbarText.text.equals("-1")){
-                    binding!!.speedSeekbarText.text = "약간 느림"
-                } else if(binding!!.speedSeekbarText.text.equals("0")){
-                    binding!!.speedSeekbarText.text = "보통"
-                } else if(binding!!.speedSeekbarText.text.equals("1")){
-                    binding!!.speedSeekbarText.text = "약간 빠름"
-                } else if(binding!!.speedSeekbarText.text.equals("2")){
-                    binding!!.speedSeekbarText.text = "빠름"
-                } else if(binding!!.speedSeekbarText.text.equals("3")){
-                    binding!!.speedSeekbarText.text = "매우 빠름"
-                }
-            }
         })
-
-
 
         //전화번호
         binding.modifyPhoneNumber.addTextChangedListener(object : TextWatcher {
@@ -224,12 +206,29 @@ class VoiceSettingActivity : AppCompatActivity() {
 
         binding.btnModify.setOnClickListener {
             var phone = binding.modifyPhoneNumber.text.toString()
-            if(phone!!.isNotEmpty()){
+            if(phone.isNotEmpty()){
                 MyApplication.prefs.setString("prefphonenumber", phone)
                 Toast.makeText(this, "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-
+    // seekbar 동작 중 및 동작 완료 시 텍스트 처리
+    private fun SeekBarText() {
+        if(binding.speedSeekbarText.text.equals("-3")){
+            binding.speedSeekbarText.text = "매우 느림"
+        } else if(binding.speedSeekbarText.text.equals("-2")){
+            binding.speedSeekbarText.text = "느림"
+        } else if(binding.speedSeekbarText.text.equals("-1")){
+            binding.speedSeekbarText.text = "약간 느림"
+        } else if(binding.speedSeekbarText.text.equals("0")){
+            binding.speedSeekbarText.text = "보통"
+        } else if(binding.speedSeekbarText.text.equals("1")){
+            binding.speedSeekbarText.text = "약간 빠름"
+        } else if(binding.speedSeekbarText.text.equals("2")){
+            binding.speedSeekbarText.text = "빠름"
+        } else if(binding.speedSeekbarText.text.equals("3")){
+            binding.speedSeekbarText.text = "매우 빠름"
+        }
+    }
 }

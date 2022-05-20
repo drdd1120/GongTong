@@ -1,5 +1,6 @@
 package com.gongtong
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.os.Looper
 import com.gongtong.databinding.ActivitySplashBinding
 
 private lateinit var binding: ActivitySplashBinding
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

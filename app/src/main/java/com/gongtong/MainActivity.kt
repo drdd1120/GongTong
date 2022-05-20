@@ -1,5 +1,6 @@
 package com.gongtong
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
@@ -25,7 +26,9 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
+@SuppressLint("StaticFieldLeak")
 private lateinit var binding: ActivityMainBinding
+@SuppressLint("StaticFieldLeak")
 private var statusProgress: ProgressBar?=null;
 var gText: String? = null
 val audioPlay = MediaPlayer()
@@ -42,7 +45,8 @@ class MainActivity : AppCompatActivity() {
         //네비게이션메뉴 적용
         initNavigation()
         //sharedPreference 값확인, 없으면 회원가입으로, 있으면 메인으로
-        var prefKey = MyApplication.prefs.getString("prefkey", "")
+
+        val prefKey = MyApplication.prefs.getString("prefkey", "")
         if (prefKey != "") {
             //토스트 메세지 출력 테스트
             //Toast.makeText(this, prefKey.toString(), Toast.LENGTH_SHORT).show()
@@ -51,9 +55,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 글자 한번에 지우기
+        binding.deleteTextButton.setOnClickListener{
+            binding.editText.setText(null)
+        }
+
         //스피커버튼 네이버클로바 음성출력
-        binding!!.speekbutton.setOnClickListener {
-            gText = binding!!.editText.text.toString()
+        binding.speekbutton.setOnClickListener {
+            gText = binding.editText.text.toString()
             if (gText == "") {
                 Toast.makeText(this, "알림: 텍스트를 입력해 주세요.", Toast.LENGTH_LONG).show()
             }
@@ -68,16 +77,19 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setupWithNavController(navController)
     }
 
+    @SuppressLint("StaticFieldLeak")
     inner class AsyncTaskExample : AsyncTask<String, String, String>() {
+        @Deprecated("Deprecated in Java")
         override fun onPreExecute() {
             super.onPreExecute()
             statusProgress?.visibility = View.VISIBLE
         }
 
+        @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: String?): String {
             val voice = MyApplication.prefs.getString("voice", "ntaejin")
-            var tmp = MyApplication.prefs.getString("voicespeed", "0").toInt()*-1
-            var voicespeed = tmp.toString()
+            val tmp = MyApplication.prefs.getString("voicespeed", "0").toInt()*-1
+            val voicespeed = tmp.toString()
 
             //APIExamTTS.main(args)
             val clientId = "g98fbfgxwm"//애플리케이션 클라이언트 아이디값";
@@ -127,7 +139,6 @@ class MainActivity : AppCompatActivity() {
                     audioPlay.prepare()
                     audioPlay.start()
 
-
                 } else {  // 오류 발생
                     br = BufferedReader(InputStreamReader(con.errorStream))
                     var inputLine: String?
@@ -144,15 +155,21 @@ class MainActivity : AppCompatActivity() {
             return ""
         }
 
+        @Deprecated("Deprecated in Java",
+            ReplaceWith("super.onProgressUpdate(*values)", "android.os.AsyncTask")
+        )
         override fun onProgressUpdate(vararg values: String?) {
             super.onProgressUpdate(*values)
         }
 
+        @Deprecated("Deprecated in Java")
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             statusProgress?.visibility = View.GONE
             //
-            binding!!.editText.setText(gText)
+            binding.editText.setText(gText)
+            //커서 항상 오른쪽으로
+            binding.editText.setSelection(binding.editText.length())
         }
     }
 
@@ -192,8 +209,8 @@ class MainActivity : AppCompatActivity() {
     //비상전화버튼 실행
     private fun startProcess() {
         Toast.makeText(this, "비상전화", Toast.LENGTH_SHORT).show()
-        var intent = Intent(Intent.ACTION_DIAL)
-        var phonenumber = MyApplication.prefs.getString("prefphonenumber","")
+        val intent = Intent(Intent.ACTION_DIAL)
+        val phonenumber = MyApplication.prefs.getString("prefphonenumber","")
         intent.data = Uri.parse("tel:".plus(phonenumber))
         if(intent.resolveActivity(packageManager) != null){
             startActivity(intent)
@@ -208,12 +225,12 @@ class MainActivity : AppCompatActivity() {
 
     //전화 버튼 눌렀을때 메소드 동작
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item!!.itemId) {
+        return when (item.itemId) {
             R.id.action_call -> {
                 checkPermission()
-                return super.onOptionsItemSelected(item)
+                super.onOptionsItemSelected(item)
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -221,16 +238,18 @@ class MainActivity : AppCompatActivity() {
     fun receiveData(tmp:String){
         val tmp2 = binding.editText.text.toString()
         binding.editText.setText(tmp2.plus(" ").plus(tmp))
+        //커서 항상 오른쪽으로
+        binding.editText.setSelection(binding.editText.length())
     }
 
     //네이게이션바 숨김 메소드
-    fun HideBottomNavi(state: Boolean){
+    fun hideBottomNavi(state: Boolean){
         if(state) binding.bottomNavView.visibility = View.GONE else binding.bottomNavView.visibility = View.VISIBLE
     }
 
     //프래그먼트 이동 메소드, 번들에 값 저장하여 프래그먼트<->프래그먼트 값전달
     fun replaceFragment(fragment: Fragment, result: Int) {
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putInt("result",result)
         fragment.arguments = bundle
         val fragmentManager = supportFragmentManager
@@ -256,4 +275,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
 

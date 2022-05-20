@@ -10,7 +10,7 @@
         android:name=".preference.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_gongtong"
-        android:label="Gongtong"
+        android:label="공평한 소통"
         android:roundIcon="@mipmap/ic_gongtong_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GongTong"

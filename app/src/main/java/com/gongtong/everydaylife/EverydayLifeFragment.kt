@@ -37,7 +37,7 @@ class EverydayLifeFragment : Fragment(R.layout.fragment_everyday_life) {
             val mLayoutManager = GridLayoutManager(context,spanCount)
             //mLayoutManager.reverseLayout = true
             //mLayoutManager.stackFromEnd = true
-            binding?.recyclerView?.setLayoutManager(mLayoutManager)
+            binding?.recyclerView?.layoutManager = mLayoutManager
         }
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
         override fun onChildRemoved(snapshot: DataSnapshot) {}
@@ -86,7 +86,7 @@ class EverydayLifeFragment : Fragment(R.layout.fragment_everyday_life) {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
+        //val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 0)) //리사이클러뷰 가로
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 1)) //리사이클러뷰 세로
         gridAdapter.notifyDataSetChanged() // view 를 다시 그림;

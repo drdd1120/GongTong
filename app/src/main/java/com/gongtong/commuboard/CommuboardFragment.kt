@@ -113,9 +113,9 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
             if (gridList.name=="날씨") {
                 (activity as MainActivity).replaceFragment(DetailFragment(), 17)
             }
-
         }
     }
+
     private fun initArticleRecyclerView() {
         // activity 일 때는 그냥 this 로 넘겼지만 (그자체가 컨텍스트라서) 그러나
         // 프레그 먼트의 경우에는 아래처럼. context
@@ -135,7 +135,7 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
+        //val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 0)) //리사이클러뷰 가로
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 1)) //리사이클러뷰 세로
         gridAdapter.notifyDataSetChanged() // view 를 다시 그림;
