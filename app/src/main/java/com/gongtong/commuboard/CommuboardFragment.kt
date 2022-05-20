@@ -113,9 +113,9 @@ class CommuboardFragment : Fragment(R.layout.fragment_commuboard) {
             if (gridList.name=="날씨") {
                 (activity as MainActivity).replaceFragment(DetailFragment(), 17)
             }
-
         }
     }
+
     private fun initArticleRecyclerView() {
         // activity 일 때는 그냥 this 로 넘겼지만 (그자체가 컨텍스트라서) 그러나
         // 프레그 먼트의 경우에는 아래처럼. context
