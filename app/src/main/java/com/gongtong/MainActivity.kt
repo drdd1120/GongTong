@@ -76,7 +76,8 @@ class MainActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg params: String?): String {
             val voice = MyApplication.prefs.getString("voice", "ntaejin")
-            val voicespeed = MyApplication.prefs.getString("voicespeed", "0")
+            var tmp = MyApplication.prefs.getString("voicespeed", "0").toInt()*-1
+            var voicespeed = tmp.toString()
 
             //APIExamTTS.main(args)
             val clientId = "g98fbfgxwm"//애플리케이션 클라이언트 아이디값";
@@ -255,5 +256,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
 

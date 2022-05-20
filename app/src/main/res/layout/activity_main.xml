@@ -41,6 +41,7 @@
             android:maxLines="16"
             android:scrollbars="vertical"
             app:layout_constraintHorizontal_bias="0.518"
+            app:endIconMode="clear_text"
             />
 
         <ImageButton
