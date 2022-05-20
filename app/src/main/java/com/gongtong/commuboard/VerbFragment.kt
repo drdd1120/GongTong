@@ -109,7 +109,7 @@ class VerbFragment : Fragment(R.layout.fragment_verb) {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
+        //val recyclerView = requireView().findViewById(R.id.recycler_view) as RecyclerView
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 0)) //리사이클러뷰 가로
         //recyclerView.addItemDecoration(DividerItemDecoration(requireView().context, 1)) //리사이클러뷰 세로
         gridAdapter.notifyDataSetChanged() // view 를 다시 그림;

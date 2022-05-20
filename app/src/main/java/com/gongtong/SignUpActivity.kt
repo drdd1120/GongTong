@@ -1,5 +1,6 @@
 package com.gongtong
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.gongtong.databinding.ActivitySignUpBinding
 import com.gongtong.preference.MyApplication
 import com.google.firebase.firestore.FirebaseFirestore
 
+@SuppressLint("StaticFieldLeak")
 private var firebaseFirestore: FirebaseFirestore? = null
 
 class SignUpActivity : AppCompatActivity() {
@@ -95,10 +97,10 @@ class SignUpActivity : AppCompatActivity() {
             userDTO.birth = binding.birth.text.toString()
             userDTO.phone = binding.phone.text.toString()
 
-            var phonenumber = userDTO.phone!!
+            val phonenumber = userDTO.phone!!
             MyApplication.prefs.setString("prefphonenumber", phonenumber)
 
-            var key = userDTO.birth!!.plus(userDTO.phone!!)
+            val key = userDTO.birth!!.plus(userDTO.phone!!)
             MyApplication.prefs.setString("prefkey", key)
 
             if(userDTO.name!!.isNotEmpty() && userDTO.birth!!.isNotEmpty() && userDTO.phone!!.isNotEmpty()){
