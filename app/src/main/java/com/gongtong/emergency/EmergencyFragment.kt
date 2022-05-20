@@ -37,7 +37,7 @@ class EmergencyFragment : Fragment(R.layout.fragment_emergency) {
             val mLayoutManager = GridLayoutManager(context,spanCount)
             //mLayoutManager.reverseLayout = true
             //mLayoutManager.stackFromEnd = true
-            binding?.recyclerView?.setLayoutManager(mLayoutManager)
+            binding?.recyclerView?.layoutManager = mLayoutManager
         }
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
         override fun onChildRemoved(snapshot: DataSnapshot) {}
