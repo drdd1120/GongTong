@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity() {
             val voicespeed = MyApplication.prefs.getString("voicespeed", "0")
 
             //APIExamTTS.main(args)
-            val clientId = "5ueydnnck3"//애플리케이션 클라이언트 아이디값";
-            val clientSecret = "BzYfc4S3DTMSjdhbHJHds5843B5ptvWDdonVe2Bi"//애플리케이션 클라이언트 시크릿값";
+            val clientId = "g98fbfgxwm"//애플리케이션 클라이언트 아이디값";
+            val clientSecret = "xAyNzw1tRJMrPoZcw6DEbNtBKS4zPgsxxptqAXJn"//애플리케이션 클라이언트 시크릿값";
             try {
                 val text = URLEncoder.encode(params[0], "UTF-8")
 
