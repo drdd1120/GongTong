@@ -36,17 +36,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        //툴바 이름 삭제
+        supportActionBar?.setDisplayShowTitleEnabled(false);
+        //네비게이션메뉴 적용
         initNavigation()
-
+        //sharedPreference 값확인, 없으면 회원가입으로, 있으면 메인으로
         var prefKey = MyApplication.prefs.getString("prefkey", "")
-
         if (prefKey != "") {
+            //토스트 메세지 출력 테스트
             //Toast.makeText(this, prefKey.toString(), Toast.LENGTH_SHORT).show()
         } else {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
 
+        //스피커버튼 네이버클로바 음성출력
         binding!!.speekbutton.setOnClickListener {
             gText = binding!!.editText.text.toString()
             if (gText == "") {
@@ -56,6 +61,8 @@ class MainActivity : AppCompatActivity() {
             AsyncTaskExample().execute(gText)
         }
     }
+
+    //안드로이드 제트팩 네비게이션 구현
     private fun initNavigation() {
         val navController = findNavController(R.id.fragment_host)
         binding.bottomNavView.setupWithNavController(navController)
@@ -149,15 +156,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun checkPermission() {
+    //전화 권한 체크
+    private fun checkPermission() {
         // 1. 위험권한(Camera) 권한 승인상태 가져오기
         val callPermission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
         if (callPermission == PackageManager.PERMISSION_GRANTED) {
-            // 카메라 권한이 승인된 상태일 경우
+            // 전화 권한이 승인된 상태일 경우
             startProcess()
-
         } else {
-            // 카메라 권한이 승인되지 않았을 경우
+            // 전화 권한이 승인되지 않았을 경우
             requestPermission()
         }
     }
@@ -167,7 +174,7 @@ class MainActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CALL_PHONE), 99)
     }
 
-    // 권한 처리
+    // 3. 권한 처리
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -182,30 +189,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun startProcess() {
+    //비상전화버튼 실행
+    private fun startProcess() {
         Toast.makeText(this, "비상전화", Toast.LENGTH_SHORT).show()
         var intent = Intent(Intent.ACTION_DIAL)
-        intent.data = Uri.parse("tel:0537207900")
+        var phonenumber = MyApplication.prefs.getString("prefphonenumber","")
+        intent.data = Uri.parse("tel:".plus(phonenumber))
         if(intent.resolveActivity(packageManager) != null){
             startActivity(intent)
         }
     }
 
+    //옵션메뉴 생성
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
 
+    //전화 버튼 눌렀을때 메소드 동작
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item!!.itemId) {
-            R.id.action_call -> { //검색 버튼 눌렀을 때
+            R.id.action_call -> {
                 checkPermission()
                 return super.onOptionsItemSelected(item)
             }
             else -> return super.onOptionsItemSelected(item)
         }
     }
-
 
     //프래그먼트에서 값전달받아서 edittext에 넣기
     fun receiveData(tmp:String){
@@ -218,7 +228,7 @@ class MainActivity : AppCompatActivity() {
         if(state) binding.bottomNavView.visibility = View.GONE else binding.bottomNavView.visibility = View.VISIBLE
     }
 
-    //프래그먼트 이동 메소드
+    //프래그먼트 이동 메소드, 번들에 값 저장하여 프래그먼트<->프래그먼트 값전달
     fun replaceFragment(fragment: Fragment, result: Int) {
         var bundle = Bundle()
         bundle.putInt("result",result)
@@ -229,6 +239,7 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.addToBackStack(null).commit()
     }
 
+    //백스택에 값이 없을 경우 뒤로가기 2번으로 앱종료
     override fun onBackPressed() {
         val fragmentManager = supportFragmentManager
         if(fragmentManager.backStackEntryCount==0){

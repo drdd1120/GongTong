@@ -38,6 +38,7 @@ class VoiceSettingActivity : AppCompatActivity() {
         voiceChoice.put("준영", "njoonyoung")
         voiceChoice.put("재욱", "njaewook")
         voiceChoice.put("기효", "nes_c_kihyo")
+
         //여자
         voiceChoice.put("고은", "ngoeun")
         voiceChoice.put("기서", "ntiffany")
@@ -59,11 +60,11 @@ class VoiceSettingActivity : AppCompatActivity() {
         voiceChoice.put("지원", "njiwon")
         voiceChoice.put("지윤", "njiyun")
         voiceChoice.put("혜리", "nes_c_hyeri")
+
         //아이
         voiceChoice.put("하준", "nhajun")
         voiceChoice.put("다인", "ndain")
         voiceChoice.put("가람", "ngaram")
-
 
         binding!!.men.setOnClickListener {
             val items = arrayOf("기효", "민상", "성훈", "승표", "시윤", "신우", "영일", "원탁", "재욱", "종현", "주안", "준영", "지환", "지훈", "진호", "태진")
@@ -82,10 +83,10 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
-                        Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "취소누름", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
                 })
             builder.show()
         }
@@ -107,10 +108,10 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
-                        Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "취소누름", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
                 })
             builder.show()
         }
@@ -133,10 +134,10 @@ class VoiceSettingActivity : AppCompatActivity() {
                         if (voice != null) {
                             MyApplication.prefs.setString("voice", voice)
                         }
-                        Toast.makeText(this, voiceChoice.get(selectedItem), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()
                     })
                 .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "취소누름", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
                 })
             builder.show()
         }
@@ -178,24 +179,18 @@ class VoiceSettingActivity : AppCompatActivity() {
                     binding.btnModify.isEnabled = false
                 }
             }
-
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
 
         binding.modifyPhoneNumber.setText(MyApplication.prefs.getString("prefphonenumber", ""))
 
         binding.btnModify.setOnClickListener {
-
             var phone = binding.modifyPhoneNumber.text.toString()
-
             if(phone!!.isNotEmpty()){
                 MyApplication.prefs.setString("prefphonenumber", phone)
                 Toast.makeText(this, "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
-
 }
