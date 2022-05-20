@@ -1,12 +1,9 @@
 package com.gongtong.commuboard
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,16 +20,13 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private lateinit var gridAdapter: GridAdapter
     private var binding: FragmentDetailBinding? = null
     private val gridList = mutableListOf<GridData>()
-    private lateinit var callback: OnBackPressedCallback
 
     private val listener = object : ChildEventListener {
-
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
             val articleModel = snapshot.getValue(GridData::class.java)
             articleModel ?: return
             gridList.add(articleModel) // 리스트에 새로운 항목을 더해서;
             gridAdapter.submitList(gridList) // 어뎁터 리스트에 등록;
-
             var spanCount=3
             if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 spanCount = 4
@@ -43,32 +37,21 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             binding?.recyclerView?.setLayoutManager(mLayoutManager)
         }
 
-
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-
         override fun onChildRemoved(snapshot: DataSnapshot) {}
-
         override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-
         override fun onCancelled(error: DatabaseError) {}
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val fragmentDetailFragment = FragmentDetailBinding.bind(view)
         binding = fragmentDetailFragment
-
-        gridList.clear() //리스트 초기화;
-
+        gridList.clear()
         initDB()
-
         initArticleAdapter()
-
         initArticleRecyclerView()
-
         initListener()
-
     }
 
     private fun initDB() {
@@ -156,6 +139,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
               mActivity.receiveData(gridList.name)
         }
     }
+
     private fun initArticleRecyclerView() {
         // activity 일 때는 그냥 this 로 넘겼지만 (그자체가 컨텍스트라서) 그러나
         // 프레그 먼트의 경우에는 아래처럼. context
@@ -172,7 +156,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         articleDB.addChildEventListener(listener)
     }
 
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
@@ -182,22 +165,22 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         gridAdapter.notifyDataSetChanged() // view 를 다시 그림;
         val mainAct = activity as MainActivity
         mainAct.HideBottomNavi(true)
-
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) { // landscape
-            binding!!.recyclerView.layoutManager = GridLayoutManager(context,4) // grid layout
+            binding!!.recyclerView.layoutManager = GridLayoutManager(context,4) // 가로모드
         }
         else { // portrait
-            binding!!.recyclerView.layoutManager = GridLayoutManager(context, 3) // linear layout
+            binding!!.recyclerView.layoutManager = GridLayoutManager(context, 3) // 세로모드
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         articleDB.removeEventListener(listener)
+        // 네비게이션바 숨김
         val mainAct = activity as MainActivity
         mainAct.HideBottomNavi(false)
     }

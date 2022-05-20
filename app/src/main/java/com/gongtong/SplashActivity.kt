@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.gongtong.databinding.ActivityMainBinding
 import com.gongtong.databinding.ActivitySplashBinding
 
 private lateinit var binding: ActivitySplashBinding
