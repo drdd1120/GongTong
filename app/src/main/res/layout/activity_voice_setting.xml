@@ -180,7 +180,6 @@
             android:layout_width="230dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
-            android:imeOptions="flagNoExtractUi"
             android:background="@drawable/button_round"
             android:hint="010xxxxyyyy"
             android:inputType="phone"
