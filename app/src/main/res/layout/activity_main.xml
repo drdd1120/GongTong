@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="16dp"
+            android:imeOptions="flagNoExtractUi"
             android:hint="글자를 입력하세요."
             android:backgroundTint = "@color/teal_200"
             android:lines="4"
