@@ -189,7 +189,8 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneSettingText" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneSettingText"
+            android:imeOptions="flagNoExtractUi"/>
 
         <TextView
             android:id="@+id/phoneTest"
