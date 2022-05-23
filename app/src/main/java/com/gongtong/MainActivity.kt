@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -21,6 +22,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.gongtong.databinding.ActivityMainBinding
 import com.gongtong.preference.MyApplication
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -33,6 +40,8 @@ private var statusProgress: ProgressBar?=null;
 var gText: String? = null
 val audioPlay = MediaPlayer()
 var backKeyPressedTime : Long = 0
+private lateinit var NaverClovarClientId : String
+private lateinit var NaverClovarClientSecret : String
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         //네비게이션메뉴 적용
         initNavigation()
         //sharedPreference 값확인, 없으면 회원가입으로, 있으면 메인으로
+        initDB()
 
         val prefKey = MyApplication.prefs.getString("prefkey", "")
         if (prefKey != "") {
@@ -71,6 +81,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initDB() {
+        Firebase.database.reference.child("NaverClovaKey").child("clientId").get().addOnSuccessListener {
+            NaverClovarClientId= it.value as String
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        Firebase.database.reference.child("NaverClovaKey").child("clientSecret").get().addOnSuccessListener {
+            NaverClovarClientSecret= it.value as String
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+    }
+
     //안드로이드 제트팩 네비게이션 구현
     private fun initNavigation() {
         val navController = findNavController(R.id.fragment_host)
@@ -92,8 +115,8 @@ class MainActivity : AppCompatActivity() {
             val voicespeed = tmp.toString()
 
             //APIExamTTS.main(args)
-            val clientId = "g98fbfgxwm"//애플리케이션 클라이언트 아이디값";
-            val clientSecret = "xAyNzw1tRJMrPoZcw6DEbNtBKS4zPgsxxptqAXJn"//애플리케이션 클라이언트 시크릿값";
+            val clientId = NaverClovarClientId//애플리케이션 클라이언트 아이디값";
+            val clientSecret = NaverClovarClientSecret//애플리케이션 클라이언트 시크릿값";
             try {
                 val text = URLEncoder.encode(params[0], "UTF-8")
 

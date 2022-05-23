@@ -18,10 +18,12 @@
         <activity
             android:name=".settings.VoiceSettingActivity"
             android:exported="false"
-            android:theme="@style/Theme.GongTong.NoActionBar"/>
+            android:theme="@style/Theme.GongTong.NoActionBar"
+            android:configChanges = "keyboardHidden|orientation|screenSize|layoutDirection"/>
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges = "keyboardHidden|orientation|screenSize|layoutDirection"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
