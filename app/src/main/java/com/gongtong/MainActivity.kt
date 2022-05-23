@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //DB 연결
     private fun initDB() {
         Firebase.database.reference.child("NaverClovaKey").child("clientId").get().addOnSuccessListener {
             NaverClovarClientId= it.value as String
