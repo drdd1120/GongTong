@@ -155,4 +155,4 @@ TTS(Text To Speech)와 구체적인 시각화를 통해 접근성을 높이고 �
 
 ## 4. 기타
   + ### 포스터
-![poster](https://user-images.githubusercontent.com/83627418/170064373-421371d6-0c10-4e32-9dad-7c035f6ea559.png)
+![poster](https://user-images.githubusercontent.com/83627418/170229870-cec5ca24-e754-4f6f-8a23-e99e7a72096a.png)
