@@ -3,6 +3,7 @@ package com.gongtong
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatDrawableManager.preload
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,6 @@ class GridAdapter(
 
     inner class ViewHolder(private val binding: ItemRecyclerBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(griddata: GridData) {
             binding.name.text = griddata.name
             Log.d("이미지 주소",griddata.image_url )

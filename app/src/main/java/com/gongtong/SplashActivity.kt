@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.gongtong.databinding.ActivitySplashBinding
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 
 private lateinit var binding: ActivitySplashBinding
 @SuppressLint("CustomSplashScreen")
@@ -21,6 +24,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }, DURATION)
+
     }
 
     companion object {

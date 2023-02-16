@@ -51,7 +51,7 @@
             android:layout_height="25dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/ic_baseline_delete_text_24"
-            android:backgroundTint="#EAEAEA"
+            android:backgroundTint="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/editText"
             app:layout_constraintEnd_toStartOf="@+id/speekbutton"
